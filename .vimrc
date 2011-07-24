@@ -91,6 +91,12 @@ set autoread                   " 他で書き換えられたら自動で読み�
 set whichwrap=b,s,h,l,<,>,[,]  " カーソルを行頭、行末で止まらないようにする
 set scrolloff=5                " スクロール時の余白確保
 
+"カーソルを表示行で移動する。物理行移動は<C-n>,<C-p>
+nnoremap j gj
+nnoremap k gk
+nnoremap <Down> gj
+nnoremap <Up>   gk
+
 " <display>
 set showmatch         " 括弧の対応をハイライト
 set number            " 行番号表示
