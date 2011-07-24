@@ -127,3 +127,14 @@ augroup END
 :hi CursorLine gui=underline
 highlight CursorLine ctermbg=black guibg=black
 
+" === junkフォルダに一時ファイルを作成 ===
+function! GenerateFileName()
+  let now = localtime()
+  let extention = input("Extention?: ")
+  let filename =  strftime("%Y-%m-%d-%H%M%S", now) . "." . extention
+  return "/Users/kazu634/junk/" . filename
+endfunction
+
+command! EditTemporaryFile :edit `=GenerateFileName()`
+
+
