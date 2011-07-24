@@ -1,0 +1,3 @@
+"<color>
+
+colorscheme murphy
