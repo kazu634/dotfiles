@@ -10,6 +10,7 @@
   grep = auto
 [core]
   excludesfile = ~/.gitignore  # globalな.gitignoreの指定
+	editor = /usr/bin/vim
 [alias]
   # log関連
   wc = whatchanged         # logに変更されたファイルも一緒に出す
