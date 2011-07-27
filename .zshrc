@@ -17,11 +17,15 @@ autoload predict-on
 predict-on
 
 # === History ===
-HISTFILE=~/.zhistory
-SAVEHIST=10000
+HISTFILE=$HOME/.zsh-history
+HISTSIZE=100000
+SAVEHIST=100000
 
 setopt hist_no_store hist_ignore_dups hist_reduce_blanks hist_ignore_space
 setopt incappendhistory sharehistory
+setopt extended_history
+
+function history-all { history -E 1 }
 
 # === Key Bind ===
 bindkey -e
