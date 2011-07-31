@@ -66,8 +66,9 @@ au FileType unite inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vspli
 au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
 au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
 
-" QuickRun
-silent! nmap <unique> ,q <Plug>(quickrun)
+" Hatena mode
+set runtimepath+=~/.vim/bundle/hatena-vim
+let g:hatena_user='sirocco634'
 
 " <misc>
 syntax on
