@@ -140,4 +140,3 @@ endfunction
 
 command! EditTemporaryFile :edit `=GenerateFileName()`
 
-
