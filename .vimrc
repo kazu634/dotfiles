@@ -14,6 +14,7 @@ Bundle 'ZenCoding.vim'
 Bundle 'motemen/hatena-vim'
 Bundle 'The-NERD-Commenter'
 Bundle 'AutoClose'
+Bundle 'motemen/git-vim'
 
 filetype plugin indent on     " required!
 
