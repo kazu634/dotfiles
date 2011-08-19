@@ -11,7 +11,6 @@ compinit
 setopt correct
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-
 zstyle ':completion:*:default' menu select=1 # 補完メニューをカーソルで選択可能にする。
 zstyle ':completion:*:cd:*' tag-order local-directories path-directories # カレントに候補が無い場合のみcdpath 上のディレクトリが候補となる。
 setopt list_packed # 補完候補をつめて表示する
