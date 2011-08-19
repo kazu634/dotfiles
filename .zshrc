@@ -12,6 +12,17 @@ setopt correct
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
+zstyle ':completion:*:default' menu select=1 # 補完メニューをカーソルで選択可能にする。
+zstyle ':completion:*:cd:*' tag-order local-directories path-directories # カレントに候補が無い場合のみcdpath 上のディレクトリが候補となる。
+setopt list_packed # 補完候補をつめて表示する
+setopt auto_menu # TAB で順に補完候補を切り替える
+setopt auto_list # 複数の補完候補があったときに、そのリストを自動的に表示
+setopt complete_in_word # 補完開始時にカーソルは単語の終端になくても良い。
+setopt list_types # 種類を示すマーク表示をつける(ls -fと同じもの)
+setopt extended_history # コマンド開始時のタイムスタンプと、実行時間(秒)をヒストリファイルに書き込む。
+setopt auto_param_keys # カッコの対応などを自動的に補完
+setopt auto_param_slash # ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
+
 # === Prediction ===
 autoload predict-on
 predict-on
