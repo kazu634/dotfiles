@@ -28,7 +28,7 @@ autoload predict-on
 predict-on
 
 # === History ===
-HISTFILE=$HOME/.zsh-history
+HISTFILE=$HOME/.zhistory
 HISTSIZE=100000
 SAVEHIST=100000
 
@@ -131,6 +131,3 @@ if [ "$TERM" = "screen" ]; then
   chpwd
 fi
 
-# === Directory ===
-setopt autopushd
-alias gd='dirs -v; echo -n "select number: "; read newdir; cd -"$newdir"'
