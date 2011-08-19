@@ -35,9 +35,6 @@ autoload -U colors
 colors
 
 # === Prompt ===
-RPROMPT="%~ [%h]"
-PROMPT+="%B$(git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1 /')%b%{${reset_color}%}"
-
 # http://blog.8-p.info/2009/01/red-prompt
 PROMPT="%{$fg[green]%}%n@%m%#%{$reset_color%} "
 precmd () {
