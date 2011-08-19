@@ -47,9 +47,9 @@ fi
 
 precmd () {
   if [ -n "$SSH_CONNECTION" ]; then
-    PROMPT="%{$fg[blue]%}%n@%m%#%{$reset_color%} "
+    PROMPT="%{%(?.$fg[blue].$fg[red])%}%n@%m%#%{$reset_color%} "
   else
-    PROMPT="%{$fg[green]%}%n@%m%#%{$reset_color%} "
+    PROMPT="%{%(?.$fg[green].$fg[red])%}%n@%m%#%{$reset_color%} "
   fi
 }
 
