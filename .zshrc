@@ -39,7 +39,7 @@ setopt extended_history
 function history-all { history -E 1 }
 
 # === Key Bind ===
-bindkey -e
+bindkey -v
 
 # === Color ===
 autoload -U colors
