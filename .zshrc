@@ -46,10 +46,18 @@ autoload -U colors
 colors
 
 # === Prompt ===
-# http://blog.8-p.info/2009/01/red-prompt
-PROMPT="%{$fg[green]%}%n@%m%#%{$reset_color%} "
+if [ -n "$SSH_CONNECTION" ]; then
+  PROMPT="%{$fg[blue]%}%n@%m%#%{$reset_color%} "
+else
+  PROMPT="%{$fg[green]%}%n@%m%#%{$reset_color%} "
+fi
+
 precmd () {
-  PROMPT="%{%(?.$fg[green].$fg[red])%}%n@%m%#%{$reset_color%} "
+  if [ -n "$SSH_CONNECTION" ]; then
+    PROMPT="%{$fg[blue]%}%n@%m%#%{$reset_color%} "
+  else
+    PROMPT="%{$fg[green]%}%n@%m%#%{$reset_color%} "
+  fi
 }
 
 # === Direcotry ===
