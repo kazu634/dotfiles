@@ -1,9 +1,3 @@
-# === Judge OSes ===
-function is_darwin(){
-  [[ $OSTYPE == darwin* ]] && return 0
-  return 1
-}
-
 # === Completition ===
 autoload -U compinit
 compinit
@@ -67,17 +61,26 @@ alias ls="ls -h"
 alias ll="ls -hl"
 alias cp="cp -p"
 alias ld="ls -hl | grep ^d"
-# alias platex="platex --kanji=utf8"
 
 alias cpan="sudo cpan"
 
 alias screen='screen -U -D -RR'
 
-# For Mac Only
-is_darwin && alias eject='drutil eject'
+# Settings depending on the OSes
+if [ $OSTYPE = "darwin10.0" ]; then
+  # For Mac only
+  alias eject='drutil eject'
+elif [ $OSTYPE = "linux-gnu" ]; then
+  # For Linux only
+fi
 
 # === Path ===
-export PATH=/Users/kazu634/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/Applications/UpTeX.app/teTeX/bin:$PATH
+if [ $OSTYPE = "darwin10.0" ]; then
+  # For Mac only
+  export PATH=/Users/kazu634/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:$PATH
+elif [ $OSTYPE = "linux-gnu" ]; then
+  # For Linux only
+fi
 
 # === Lang ===
 export LANG=ja_JP.UTF-8
