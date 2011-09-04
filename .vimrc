@@ -148,3 +148,13 @@ endfunction
 
 command! EditTemporaryFile :edit `=GenerateFileName()`
 
+" === Shebang がある時に実行権限を自動付与===
+autocmd BufWritePost * :call AddExecmod()
+
+function AddExecmod()
+    let line = getline(1)
+    if strpart(line, 0, 2) == "#!"
+        call system("chmod +x ". expand("%"))
+    endif
+endfunction
+
