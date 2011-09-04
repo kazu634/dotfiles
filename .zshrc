@@ -72,6 +72,9 @@ if [ $OSTYPE = "darwin10.0" ]; then
   alias eject='drutil eject'
 elif [ $OSTYPE = "linux-gnu" ]; then
   # For Linux only
+  alias vmstart='sudo virsh start'
+  alias vmstop='sudo virsh destroy'
+  alias vmlist='sudo virsh list --all'
 fi
 
 # === Path ===
