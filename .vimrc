@@ -82,6 +82,12 @@ filetype plugin on
 " <gauche>
 autocmd FileType scheme :let is_gauche=1
 
+" http://d.hatena.ne.jp/tanakaBox/20070609/1181382818
+aug Scheme
+  au!
+  au Filetype scheme setl cindent& lispwords=define
+aug END
+
 " <encoding>
 set encoding=utf-8
 
