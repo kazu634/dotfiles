@@ -62,8 +62,6 @@ alias ll="ls -hl"
 alias cp="cp -p"
 alias ld="ls -hl | grep ^d"
 
-alias cpan="sudo cpan"
-
 alias screen='screen -U -D -RR'
 
 # Settings depending on the OSes
@@ -75,6 +73,7 @@ elif [ $OSTYPE = "linux-gnu" ]; then
   alias vmstart='sudo virsh start'
   alias vmstop='sudo virsh destroy'
   alias vmlist='sudo virsh list --all'
+  alias aptitude='sudo aptitude'
 fi
 
 # === Path ===
