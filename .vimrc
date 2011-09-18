@@ -94,6 +94,8 @@ set expandtab     " tab をスペースに展開
 set shiftwidth=2  " 自動インデントの幅
 set softtabstop=4
 
+autocmd FileType make setlocal noexpandtab
+
 " <functions>
 " === 行末のスペースを削除 ===
 " 保存時に行末の空白を除去する
