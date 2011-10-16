@@ -82,6 +82,7 @@ if [ $OSTYPE = "darwin10.0" ]; then
   export PATH=/Users/kazu634/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:$PATH
 elif [ $OSTYPE = "linux-gnu" ]; then
   # For Linux only
+  export PATH=/home/kazu634/bin:$PATH
 fi
 
 # === Lang ===
