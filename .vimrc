@@ -134,3 +134,15 @@ function AddExecmod()
     endif
 endfunction
 
+" === change the current directory ===
+augroup grlcd
+  autocmd!
+  autocmd BufEnter * lcd %:p:h
+augroup END
+
+" === Invole copen command when vimgrep or so
+augroup grepopen
+  autocmd!
+  autocmd QuickFixCmdPo vimgrep cwindow
+augroup END
+
