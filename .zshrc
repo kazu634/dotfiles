@@ -74,6 +74,7 @@ elif [ $OSTYPE = "linux-gnu" ]; then
   alias vmstop='sudo virsh destroy'
   alias vmlist='sudo virsh list --all'
   alias aptitude='sudo aptitude'
+  alias vmcreate='cd /home/kazu634/kvm-hdd && sudo /home/kazu634/bin/vmcreate'
 fi
 
 # === Path ===
@@ -99,40 +100,12 @@ esac
 
 # http://nijino.homelinux.net/diary/200206.shtml#200206140
 if [ "$TERM" = "screen" ]; then
-  chpwd () { echo -n "_`dirs`\\" }
-  preexec() {
-    # see [zsh-workers:13180]
-    # http://www.zsh.org/mla/workers/2000/msg03993.html
-    emulate -L zsh
-    local -a cmd; cmd=(${(z)2})
-    case $cmd[1] in
-      fg)
-        if (( $#cmd == 1 )); then
-          cmd=(builtin jobs -l %+)
-        else
-          cmd=(builtin jobs -l $cmd[2])
-        fi
-        ;;
-      %*)
-        cmd=(builtin jobs -l $cmd[1])
-        ;;
-      cd)
-        if (( $#cmd == 2)); then
-          cmd[1]=$cmd[2]
-        fi
-        ;&
-      *)
-        echo -n "k$cmd[1]:t\\"
-        return
-        ;;
-    esac
-
-    local -A jt; jt=(${(kv)jobtexts})
-
-    $cmd >>(read num rest
-      cmd=(${(z)${(e):-\$jt$num}})
-      echo -n "k$cmd[1]:t\\") 2>/dev/null
-  }
-  chpwd
+    local -a host; host=`/bin/hostname -s`
+    preexec() {
+        # see [zsh-workers:13180]
+        # http://www.zsh.org/mla/workers/2000/msg03993.html
+        emulate -L zsh
+        local -a cmd; cmd=(${(z)2})
+        echo -n "k$host:$cmd[1]:t\\"
+    }
 fi
-
