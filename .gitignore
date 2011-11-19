@@ -21,3 +21,22 @@ working
 .emacs.d
 .emacs
 *.swp
+.bash_history
+.cpanm/
+.dropbox/
+.dvdcss/
+.hatena/
+.migemo-pattern
+.neocon/
+.recentf
+.rnd
+.sqlite_history
+.ssh/
+.subversion/
+.unite/
+.vim
+.vim-vundle/
+.viminfo
+.zcompdump
+.zhistory
+Eye-Fi Card.log
