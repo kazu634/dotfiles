@@ -16,6 +16,7 @@ Bundle 'AutoClose'
 Bundle 'motemen/git-vim'
 Bundle 'surround.vim'
 Bundle 'Markdown-syntax'
+Bundle 'Gist.vim'
 
 filetype plugin indent on     " required!
 
