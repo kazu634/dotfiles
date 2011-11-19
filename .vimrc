@@ -17,6 +17,8 @@ Bundle 'motemen/git-vim'
 Bundle 'surround.vim'
 Bundle 'Markdown-syntax'
 Bundle 'Gist.vim'
+Bundle 'Shougo/unite.vim'
+Bundle 'h1mesuke/unite-outline'
 
 filetype plugin indent on     " required!
 
@@ -91,7 +93,7 @@ filetype indent on
 filetype plugin on
 :colorscheme murphy
 set list
-set listchars=trail:_
+set listchars=trail:_,tab:>-
 
 " <gauche>
 autocmd FileType scheme :let is_gauche=1
@@ -117,10 +119,10 @@ set whichwrap=b,s,h,l,<,>,[,]  " カーソルを行頭、行末で止まらな�
 set scrolloff=5                " スクロール時の余白確保
 
 "カーソルを表示行で移動する。物理行移動は<C-n>,<C-p>
-nnoremap j gj
-nnoremap k gk
-nnoremap <Down> gj
-nnoremap <Up>   gk
+:nnoremap j gj
+:nnoremap k gk
+:nnoremap <Down> gj
+:nnoremap <Up>   gk
 
 " <display>
 set showmatch         " 括弧の対応をハイライト
@@ -133,6 +135,13 @@ set shiftwidth=2  " 自動インデントの幅
 set softtabstop=4
 
 autocmd FileType make setlocal noexpandtab
+
+" Undo highlights of the search results, when push ESC + ESC
+:nnoremap <Esc><Esc> :nohlsearch<CR>
+
+" 横分割時は下へ､ 縦分割時は右へ新しいウィンドウが開くようにする
+set splitbelow
+set splitright
 
 " <functions>
 " === 行末のスペースを削除 ===
