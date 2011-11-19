@@ -90,6 +90,8 @@ filetype on
 filetype indent on
 filetype plugin on
 :colorscheme murphy
+set list
+set listchars=trail:_
 
 " <gauche>
 autocmd FileType scheme :let is_gauche=1
