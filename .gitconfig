@@ -18,3 +18,6 @@
   lp = log -p              # diffも一緒に出す
   # logをtree表示
   graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+[github]
+	user = kazu634
+	token = bbc50deba1575e9fa6ebfd15c8cbffeb
