@@ -199,7 +199,9 @@ augroup grlcd
 augroup END
 
 " === Invole copen command when vimgrep or so
-augroup grepopen
-  autocmd!
-  autocmd QuickFixCmdPo vimgrep cwindow
-augroup END
+if has('mac')
+  augroup grepopen
+    autocmd!
+    autocmd QuickFixCmdPo vimgrep cwindow
+  augroup END
+endif
