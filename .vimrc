@@ -22,7 +22,7 @@ if has ('mac')
   Bundle 'h1mesuke/unite-outline'
   Bundle 'basyura/unite-yarm'
   Bundle 'mattn/webapi-vim'
-	Bundle 'tyru/open-browser.vim'
+  Bundle 'tyru/open-browser.vim'
 
   filetype plugin indent on     " required!
 
@@ -138,6 +138,51 @@ set scrolloff=5                " スクロール時の余白確保
 " <display>
 set showmatch         " 括弧の対応をハイライト
 set number            " 行番号表示
+
+" <statusline>
+let g:gitCurrentBranch = ''
+function! CurrentGitBranch()
+    let cwd = getcwd()
+    cd %:p:h
+    let branch = matchlist(system('/usr/bin/env git  branch -a --no-color'), '\v\* (\w*)\r?\n')
+    execute 'cd ' . cwd
+    if (len(branch))
+      let g:gitCurrentBranch = '[git:' . branch[1] . ']'
+    else
+      let g:gitCurrentBranch = ''
+    endif
+    return g:gitCurrentBranch
+endfunction
+
+autocmd BufEnter * :call CurrentGitBranch()
+
+set laststatus=2
+" ステータスラインの表示
+set statusline=%<     " 行が長すぎるときに切り詰める位置
+set statusline+=[%n]  " バッファ番号
+set statusline+=%m    " %m 修正フラグ
+set statusline+=%r    " %r 読み込み専用フラグ
+set statusline+=%h    " %h ヘルプバッファフラグ
+set statusline+=%w    " %w プレビューウィンドウフラグ
+set statusline+=%{'['.(&fenc!=''?&fenc:&enc).':'.&ff.']'}  " fencとffを表示
+set statusline+=%y    " バッファ内のファイルのタイプ
+set statusline+=\     " 空白スペース
+if winwidth(0) >= 130
+  set statusline+=%F    " バッファ内のファイルのフルパス
+else
+  set statusline+=%t    " ファイル名のみ
+endif
+set statusline+=%=    " 左寄せ項目と右寄せ項目の区切り
+set statusline+=%{g:gitCurrentBranch} " Gitのブランチ名を表示
+set statusline+=\ \   " 空白スペース2個
+set statusline+=%1l   " 何行目にカーソルがあるか
+set statusline+=/
+set statusline+=%L    " バッファ内の総行数
+set statusline+=,
+set statusline+=%c    " 何列目にカーソルがあるか
+set statusline+=%V    " 画面上の何列目にカーソルがあるか
+set statusline+=\ \   " 空白スペース2個
+set statusline+=%P    " ファイル内の何％の位置にあるか
 
 " <indent>
 set tabstop=4
