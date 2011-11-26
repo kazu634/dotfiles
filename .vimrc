@@ -144,7 +144,7 @@ let g:gitCurrentBranch = ''
 function! CurrentGitBranch()
     let cwd = getcwd()
     cd %:p:h
-    let branch = matchlist(system('/usr/bin/env git  branch -a --no-color'), '\v\* (\w*)\r?\n')
+    let branch = matchlist(system('/usr/bin/env git branch -a --no-color'), '\v\* ([0-9A-Za-z\/]*)\r?\n')
     execute 'cd ' . cwd
     if (len(branch))
       let g:gitCurrentBranch = '[git:' . branch[1] . ']'
