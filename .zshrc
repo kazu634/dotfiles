@@ -25,7 +25,9 @@ if [ $OSTYPE = "darwin10.0" ]; then
   source /usr/local/Cellar/git/1.7.7.4/etc/bash_completion.d/git-completion.bash
 elif [ $OSTYPE = "linux-gnu" ]; then
   # for Linux
-  source /etc/bash_completion
+  if [ -f ~/.git-completion.bash ]; then
+    source ~/.git-completion.bash
+  fi
 fi
 
 # === Prediction ===
