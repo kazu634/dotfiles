@@ -16,6 +16,11 @@ setopt extended_history # コマンド開始時のタイムスタンプと、実
 setopt auto_param_keys # カッコの対応などを自動的に補完
 setopt auto_param_slash # ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
 
+# For git-completion
+autoload bashcompinit
+bashcompinit
+source /usr/local/Cellar/git/1.7.7.4/etc/bash_completion.d/git-completion.bash
+
 # === Prediction ===
 autoload predict-on
 predict-on
