@@ -19,7 +19,14 @@ setopt auto_param_slash # ディレクトリ名の補完で末尾の / を自動
 # For git-completion
 autoload bashcompinit
 bashcompinit
-source /usr/local/Cellar/git/1.7.7.4/etc/bash_completion.d/git-completion.bash
+
+if [ $OSTYPE = "darwin10.0" ]; then
+  # For Mac
+  source /usr/local/Cellar/git/1.7.7.4/etc/bash_completion.d/git-completion.bash
+elif [ $OSTYPE = "linux-gnu" ]; then
+  # for Linux
+  source /etc/bash_completion
+fi
 
 # === Prediction ===
 autoload predict-on
