@@ -23,6 +23,7 @@ if has ('mac')
   Bundle 'basyura/unite-yarm'
   Bundle 'mattn/webapi-vim'
   Bundle 'tyru/open-browser.vim'
+  Bundle 'ujihisa/neco-look'
 
   filetype plugin indent on     " required!
 
