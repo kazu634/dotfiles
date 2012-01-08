@@ -113,7 +113,7 @@ autocmd FileType scheme :let is_gauche=1
 " http://d.hatena.ne.jp/tanakaBox/20070609/1181382818
 aug Scheme
   au!
-  au Filetype scheme setl cindent& lispwords=define
+  au Filetype scheme setl cindent& lispwords=define,lambda
 aug END
 
 " <encoding>
@@ -251,3 +251,14 @@ if has('mac')
     autocmd QuickFixCmdPo vimgrep cwindow
   augroup END
 endif
+
+" === template ===
+if has('mac')
+  augroup templateload
+    autocmd!
+    autocmd BufNewFile *.sh 0r ~/.vim/template/skelton.sh
+    autocmd BufNewFile *.pl 0r ~/.vim/template/skelton.pl
+    autocmd BufNewFile *.scm 0r ~/.vim/template/skelton.scm
+  augroup END
+endif
+
