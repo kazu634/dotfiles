@@ -1,0 +1,28 @@
+# Misc
+startup_message off  # おまけ: 起動画面OFF
+autodetach on        # おまけ: 回線切断時に自動でdetach
+defscrollback 1024   # おまけ: スクロールバッファ行数を増やす
+
+# Key bind
+escape ^Zz
+
+# I like a large scrollback buffer.
+defscrollback 1000
+
+# Logging
+logfile "/home/kazu634/log/screen-%Y%m%d-%n.log"
+log on
+deflog on
+
+# Status Line
+hardstatus alwayslastline '%m/%d %02c:%s %{= .g}%H%{-} %L=%-w%45L>%{=u g.}%n %t%{-}%+w'
+
+# Caption
+caption always '%?%F%{= gW}%:%{= Kk}%?%2n%f%07=%t%='
+
+# sorendition
+sorendition "+rb .G"
+
+# Screen saver
+idle 180
+blankerprg /usr/games/fortune starwars 
