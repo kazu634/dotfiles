@@ -17,13 +17,14 @@ if has ('mac')
   Bundle 'motemen/git-vim'
   Bundle 'surround.vim'
   Bundle 'Markdown-syntax'
-  Bundle 'Gist.vim'
+  Bundle 'mattn/gist-vim'
   Bundle 'Shougo/unite.vim'
   Bundle 'h1mesuke/unite-outline'
   Bundle 'basyura/unite-yarm'
   Bundle 'mattn/webapi-vim'
   Bundle 'tyru/open-browser.vim'
   Bundle 'ujihisa/neco-look'
+  Bundle 'scrooloose/syntastic'
 
   filetype plugin indent on     " required!
 
@@ -96,6 +97,12 @@ if has ('mac')
   let g:unite_yarm_access_key = 'e1724f8f64f3a69787da8121ed85ac4319999754'
   let g:unite_yarm_limit = 50
   let g:unite_yarm_backup_dir = '/tmp/yarm'
+
+  " <syntax check>
+  let g:syntastic_mode_map = { 'mode': 'active',
+    \ 'active_filetypes': ['perl', 'css', 'html', 'javascript', 'ruby', 'rst', 'sh'],
+    \ 'passive_filetypes': ['']
+  }
 endif
 
 " <misc>
