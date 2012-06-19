@@ -13,11 +13,11 @@
   editor = /usr/bin/vim
 [alias]
   # log関連
-  wc = whatchanged         # logに変更されたファイルも一緒に出す
-  ls = log --stat          # logに変更されたファイルも一緒に出す
-  lp = log -p              # diffも一緒に出す
-  # logをtree表示
-  graph = log --graph --date-order -C -M --pretty=format:\"<%h> %ad [%an] %Cgreen%d%Creset %s\" --all --date=short
+  logg = log --stat --pretty=format:'%Cblue%h %Cgreen%ar %Cred%an %Creset%s %Cred%d'
+  # log + graph
+  graph = log --graph --date-order --pretty=format:'%Cblue%h %Cgreen%ci %Cred%an %Cblue%m %Creset%s %Cred%d'
+  # status
+  st = status -s -b
 [github]
 	user = kazu634
 	token = bbc50deba1575e9fa6ebfd15c8cbffeb
