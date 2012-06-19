@@ -9,6 +9,7 @@ if has ('mac')
   Bundle 'gmarik/vundle'
   Bundle 'Align'
   Bundle 'neocomplcache'
+  Bundle 'Shougo/neocomplcache-snippets-complete'
   Bundle 'quickrun.vim'
   Bundle 'ZenCoding.vim'
   Bundle 'motemen/hatena-vim'
