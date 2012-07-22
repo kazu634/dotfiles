@@ -128,6 +128,11 @@ elif [ $OSTYPE = "linux-gnu" ]; then
   alias vmcreate='cd /home/kazu634/kvm-hdd && sudo /home/kazu634/bin/vmcreate'
 fi
 
+# Gauche + rlwrap
+if [ `which rlwrap`=0 ]; then
+  alias gosh="rlwrap -b '(){}[],#\";| ' gosh"
+fi
+
 # === Lang ===
 export LANG=ja_JP.UTF-8
 
