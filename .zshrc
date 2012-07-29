@@ -7,6 +7,8 @@ setopt correct
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 zstyle ':completion:*:default' menu select=1 # 補完メニューをカーソルで選択可能にする。
 zstyle ':completion:*:cd:*' tag-order local-directories path-directories # カレントに候補が無い場合のみcdpath 上のディレクトリが候補となる。
+zstyle ':completion:*' use-cache true # 補完でキャッシュを有効にする
+
 setopt list_packed # 補完候補をつめて表示する
 setopt auto_menu # TAB で順に補完候補を切り替える
 setopt auto_list # 複数の補完候補があったときに、そのリストを自動的に表示
