@@ -72,6 +72,11 @@ precmd () {
     fi
 }
 
+
+# RPROMPT settings
+#
+#  see: http://d.hatena.ne.jp/mollifier/20100906/p1
+
 autoload -Uz add-zsh-hook
 autoload -Uz vcs_info
 
