@@ -132,7 +132,10 @@ elif [ $OSTYPE = "linux-gnu" ]; then
 fi
 
 # Gauche + rlwrap
-if [ `which rlwrap`=0 ]; then
+which rlwrap > /dev/null
+RC=$?
+
+if [ ${RC} -eq 0 ]; then
   alias gosh="rlwrap -b '(){}[],#\";| ' gosh"
 fi
 
