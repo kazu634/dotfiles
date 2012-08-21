@@ -25,7 +25,7 @@ bashcompinit
 
 if [ $OSTYPE = "darwin10.0" ]; then
   # For Mac
-  GIT_COMPLETION=`find /usr/local/Cellar/git/ -type f -name "git-completion.bash" | head -1`
+  GIT_COMPLETION=`find /usr/local/Cellar/git/ -type f -name "git-completion.bash" | xargs ls -t | head -1`
   source ${GIT_COMPLETION}
 
 elif [ $OSTYPE = "linux-gnu" ]; then
