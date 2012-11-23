@@ -18,6 +18,9 @@ if has ('mac')
   NeoBundle 'Shougo/unite.vim.git'
   NeoBundle 'quickrun.vim'
   NeoBundle 'motemen/hatena-vim'
+  NeoBundle 'vim-scripts/VimRepress.git'
+  NeoBundle 'mattn/gist-vim.git'
+  NeoBundle 'mattn/webapi-vim.git'
 
   " -------------------------------------------------------------------------------
   " <NeoComplcache>
@@ -130,6 +133,10 @@ if has ('mac')
 
   set runtimepath+=~/.vim/bundle/hatena
   let g:hatena_user='sirocco634'
+
+  " -------------------------------------------------------------------------------
+  " <Wordpress>
+  " -------------------------------------------------------------------------------
 
 endif
 
@@ -298,3 +305,11 @@ if has('mac')
   augroup END
 endif
 
+" === IME ===
+
+" 挿入モード終了時に IME 状態を保存しない
+inoremap <silent> <Esc> <Esc>
+inoremap <silent> <C-[> <Esc>
+
+" 「日本語入力固定モード」切り替えキー
+inoremap <silent> <C-j> <C-^>
