@@ -13,8 +13,12 @@ if has ('mac')
 
   NeoBundle 'Shougo/vimproc.git'
   NeoBundle 'Shougo/neocomplcache.git'
+  NeoBundle 'Shougo/neosnippet.git'
 
+  " -------------------------------------------------------------------------------
   " <NeoComplcache>
+  " -------------------------------------------------------------------------------
+
   " Disable AutoComplPop. Comment out this line if AutoComplPop is not installed.
   " let g:acp_enableAtStartup = 0
 
@@ -97,6 +101,24 @@ if has ('mac')
   let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
   let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
   let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+
+
+  " -------------------------------------------------------------------------------
+  " <NeoSnippet>
+  " -------------------------------------------------------------------------------
+
+  " Plugin key-mappings.
+  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+
+  " SuperTab like snippets behavior.
+  imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+  smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+  " For snippet_complete marker.
+  if has('conceal')
+    set conceallevel=2 concealcursor=i
+  endif
 endif
 
 " <misc>
