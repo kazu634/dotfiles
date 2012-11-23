@@ -1,6 +1,7 @@
 [user]
   name = Kazuhiro MUSASHI
   email = simoom634@yahoo.co.jp
+
 [color]
   # colorの設定(以下のコマンドは自動で色つける)
   status = auto
@@ -8,24 +9,52 @@
   branch = auto
   interactive = auto
   grep = auto
+
 [core]
   excludesfile = ~/.gitignore  # globalな.gitignoreの指定
   editor = /usr/bin/vim
+
 [alias]
   # log関連
   logg = log --stat --pretty=format:'%C(yellow)%h %Cgreen%ar %C(cyan)%an %Creset%s %Cred%d'
+
   # log + graph
   graph = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
+
+  # status - shorter version
+  s = status -s -b
+
   # status
-  st = status -s -b
+  st = status
+
+  # diff
+  d = diff
+  dc = diff --cached
+
+  # checkout
+  co = checkout
+
+  # commit
+  c = commit
+
   # init, add, and commit
   prep = !git init && git add . && git commit -m \"initial commit\"
+
+  # add
+  a = !git add . && git status
+  au = !git add -u && git status
+
+  # alias
+  alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
+
 [github]
   user = kazu634
   token = bbc50deba1575e9fa6ebfd15c8cbffeb
+
 [merge]
   # from 1.7.6
   ff = false
+
 [pull]
   # from 1.7.9
   rebase = true
