@@ -126,6 +126,7 @@ elif [ $OSTYPE = "linux-gnu" ]; then
   alias vmlist='sudo virsh list --all'
   alias aptitude='sudo aptitude'
   alias vmcreate='cd /home/kazu634/kvm-hdd && sudo /home/kazu634/bin/vmcreate'
+  alias installed='find ~ -type f -name "*history*" | xargs grep "sudo aptitude install" | grep -v find | perl -pe "s/^.+sudo aptitude install (.*)$/\1/g" | perl -pe "s/ /\n/g" | perl -pe "s/^\n//g" | sort -u'
 fi
 
 # Gauche + rlwrap
