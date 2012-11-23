@@ -21,11 +21,11 @@
   # init, add, and commit
   prep = !git init && git add . && git commit -m \"initial commit\"
 [github]
-	user = kazu634
-	token = bbc50deba1575e9fa6ebfd15c8cbffeb
+  user = kazu634
+  token = bbc50deba1575e9fa6ebfd15c8cbffeb
 [merge]
-# from 1.7.6
-ff = false
+  # from 1.7.6
+  ff = false
 [pull]
-# from 1.7.9
-rebase = true
+  # from 1.7.9
+  rebase = true
