@@ -1,53 +1,62 @@
 if has ('mac')
-  " <Vundle settings>
-  set nocompatible               " be iMproved
-  filetype off                   " required!
 
-  set rtp+=~/.vim/bundle/vundle/
-  call vundle#rc()
+  set nocompatible               " Be iMproved
+  filetype off                   " Required!
 
-  Bundle 'gmarik/vundle'
-  Bundle 'Align'
-  Bundle 'Shougo/neocomplcache'
-  Bundle 'Shougo/neocomplcache-snippets-complete'
-  Bundle 'quickrun.vim'
-  Bundle 'ZenCoding.vim'
-  Bundle 'motemen/hatena-vim'
-  Bundle 'The-NERD-Commenter'
-  Bundle 'AutoClose'
-  Bundle 'motemen/git-vim'
-  Bundle 'surround.vim'
-  Bundle 'Markdown-syntax'
-  Bundle 'mattn/gist-vim'
-  Bundle 'Shougo/unite.vim'
-  Bundle 'h1mesuke/unite-outline'
-  Bundle 'basyura/unite-yarm'
-  Bundle 'mattn/webapi-vim'
-  Bundle 'tyru/open-browser.vim'
-  Bundle 'ujihisa/neco-look'
-  Bundle 'scrooloose/syntastic'
+  if has('vim_starting')
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
+  endif
 
-  filetype plugin indent on     " required!
+  call neobundle#rc(expand('~/.vim/bundle/'))
 
-  " <plugins>
-  " <neocomplcache>
-  let g:neocomplcache_enable_at_startup          = 1
+  " my bundles here:
 
-  " 起動時に有効化 Use neocomplcache.
+  NeoBundle 'Shougo/vimproc.git'
+  NeoBundle 'Shougo/neocomplcache.git'
+  NeoBundle 'Shougo/neosnippet.git'
+  NeoBundle 'Shougo/vimshell.git'
+  NeoBundle 'Shougo/unite.vim.git'
+  NeoBundle 'quickrun.vim'
+  NeoBundle 'motemen/hatena-vim'
+  NeoBundle 'vim-scripts/VimRepress.git'
+  NeoBundle 'mattn/gist-vim.git'
+  NeoBundle 'mattn/webapi-vim.git'
+
+  " -------------------------------------------------------------------------------
+  " <NeoComplcache>
+  " -------------------------------------------------------------------------------
+
+  " Disable AutoComplPop. Comment out this line if AutoComplPop is not installed.
+  " let g:acp_enableAtStartup = 0
+
+  " Launches neocomplcache automatically on vim startup.
   let g:neocomplcache_enable_at_startup = 1
+
   " Use smartcase.
   let g:neocomplcache_enable_smart_case = 1
+
   " Use camel case completion.
   let g:neocomplcache_enable_camel_case_completion = 1
-  " Use underbar completion.
+
+  " Use underscore completion.
   let g:neocomplcache_enable_underbar_completion = 1
-  " Set minimum syntax keyword length.
+
+  " Sets minimum char length of syntax keyword.
   let g:neocomplcache_min_syntax_length = 3
+
+  " buffer file name pattern that locks neocomplcache. e.g. ku.vim or fuzzyfinder
   let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
-  " Define keyword.
+  " Define file-type dependent dictionaries.
+  let g:neocomplcache_dictionary_filetype_lists = {
+        \ 'default' : '',
+        \ 'vimshell' : $HOME.'/.vimshell_hist',
+        \ 'scheme' : $HOME.'/.gosh_completions'
+        \ }
+
+  " Define keyword, for minor languages
   if !exists('g:neocomplcache_keyword_patterns')
-	  let g:neocomplcache_keyword_patterns = {}
+    let g:neocomplcache_keyword_patterns = {}
   endif
   let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
@@ -63,47 +72,72 @@ if has ('mac')
   " Recommended key-mappings.
   " <CR>: close popup and save indent.
   inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+
   " <TAB>: completion.
   inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
   " <C-h>, <BS>: close popup and delete backword char.
   inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
   inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
   inoremap <expr><C-y>  neocomplcache#close_popup()
   inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
-  " Enable omni completion.
+  " AutoComplPop like behavior.
+  "let g:neocomplcache_enable_auto_select = 1
+
+  " Shell like behavior(not recommended).
+  "set completeopt+=longest
+  "let g:neocomplcache_enable_auto_select = 1
+  "let g:neocomplcache_disable_auto_complete = 1
+  "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<TAB>"
+  "inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+
+  " Enable omni completion. Not required if they are already set elsewhere in .vimrc
   autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
   autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
   autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
   autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
   autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-  " Define dictionary.
-  let g:neocomplcache_dictionary_filetype_lists = {
-	  \ 'default' : '',
-	  \ 'scheme' : $HOME.'/.gosh_completions'
-	  \ }
+  " Enable heavy omni completion, which require computational power and may stall the vim.
+  if !exists('g:neocomplcache_omni_patterns')
+    let g:neocomplcache_omni_patterns = {}
+  endif
+  let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+  "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+  let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+  let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+  let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
-  " オムニ補完
-  if !exists('g:NeoComplCache_OmniPatterns')
-	  let g:NeoComplCache_OmniPatterns = {}
+
+  " -------------------------------------------------------------------------------
+  " <NeoSnippet>
+  " -------------------------------------------------------------------------------
+
+  " Plugin key-mappings.
+  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+
+  " SuperTab like snippets behavior.
+  imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+  smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+  " For snippet_complete marker.
+  if has('conceal')
+    set conceallevel=2 concealcursor=i
   endif
 
-  " <Hatena mode>
-  set runtimepath+=~/.vim/bundle/hatena-vim
+  " -------------------------------------------------------------------------------
+  " <Hatena>
+  " -------------------------------------------------------------------------------
+
+  set runtimepath+=~/.vim/bundle/hatena
   let g:hatena_user='sirocco634'
 
-  " <Unite Yet Another Redmine Mode>
-  let g:unite_yarm_server_url = 'http://192.168.11.38/redmine/'
-  let g:unite_yarm_access_key = 'e1724f8f64f3a69787da8121ed85ac4319999754'
-  let g:unite_yarm_limit = 50
-  let g:unite_yarm_backup_dir = '/tmp/yarm'
+  " -------------------------------------------------------------------------------
+  " <Wordpress>
+  " -------------------------------------------------------------------------------
 
-  " <syntax check>
-  let g:syntastic_mode_map = { 'mode': 'active',
-    \ 'active_filetypes': ['perl', 'css', 'html', 'javascript', 'ruby', 'rst', 'sh'],
-    \ 'passive_filetypes': ['']
-  }
 endif
 
 " <misc>
@@ -114,6 +148,7 @@ filetype plugin on
 :colorscheme murphy
 set list
 set listchars=trail:_,tab:>-
+
 
 " <gauche>
 autocmd FileType scheme :let is_gauche=1
@@ -270,3 +305,11 @@ if has('mac')
   augroup END
 endif
 
+" === IME ===
+
+" 挿入モード終了時に IME 状態を保存しない
+inoremap <silent> <Esc> <Esc>
+inoremap <silent> <C-[> <Esc>
+
+" 「日本語入力固定モード」切り替えキー
+inoremap <silent> <C-j> <C-^>
