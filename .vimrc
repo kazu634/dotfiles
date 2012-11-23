@@ -17,6 +17,7 @@ if has ('mac')
   NeoBundle 'Shougo/vimshell.git'
   NeoBundle 'Shougo/unite.vim.git'
   NeoBundle 'quickrun.vim'
+  NeoBundle 'motemen/hatena-vim'
 
   " -------------------------------------------------------------------------------
   " <NeoComplcache>
@@ -122,6 +123,14 @@ if has ('mac')
   if has('conceal')
     set conceallevel=2 concealcursor=i
   endif
+
+  " -------------------------------------------------------------------------------
+  " <Hatena>
+  " -------------------------------------------------------------------------------
+
+  set runtimepath+=~/.vim/bundle/hatena
+  let g:hatena_user='sirocco634'
+
 endif
 
 " <misc>
