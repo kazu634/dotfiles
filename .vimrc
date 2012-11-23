@@ -14,6 +14,9 @@ if has ('mac')
   NeoBundle 'Shougo/vimproc.git'
   NeoBundle 'Shougo/neocomplcache.git'
   NeoBundle 'Shougo/neosnippet.git'
+  NeoBundle 'Shougo/vimshell.git'
+  NeoBundle 'Shougo/unite.vim.git'
+  NeoBundle 'quickrun.vim'
 
   " -------------------------------------------------------------------------------
   " <NeoComplcache>
