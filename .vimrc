@@ -15,6 +15,7 @@ NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/vimshell.git'
 NeoBundle 'Shougo/unite.vim.git'
 NeoBundle 'quickrun.vim'
+NeoBundle 'vim-scripts/sudo.vim'
 
 if has ('mac')
   NeoBundle 'motemen/hatena-vim'
