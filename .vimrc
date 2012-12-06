@@ -1,142 +1,154 @@
+set nocompatible               " Be iMproved
+filetype off                   " Required!
+
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+" my bundles here:
+
+NeoBundle 'Shougo/vimproc.git'
+NeoBundle 'Shougo/neocomplcache.git'
+NeoBundle 'Shougo/neosnippet.git'
+NeoBundle 'Shougo/vimshell.git'
+NeoBundle 'Shougo/unite.vim.git'
+NeoBundle 'quickrun.vim'
+
 if has ('mac')
-
-  set nocompatible               " Be iMproved
-  filetype off                   " Required!
-
-  if has('vim_starting')
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
-  endif
-
-  call neobundle#rc(expand('~/.vim/bundle/'))
-
-  " my bundles here:
-
-  NeoBundle 'Shougo/vimproc.git'
-  NeoBundle 'Shougo/neocomplcache.git'
-  NeoBundle 'Shougo/neosnippet.git'
-  NeoBundle 'Shougo/vimshell.git'
-  NeoBundle 'Shougo/unite.vim.git'
-  NeoBundle 'quickrun.vim'
   NeoBundle 'motemen/hatena-vim'
   NeoBundle 'vim-scripts/VimRepress.git'
   NeoBundle 'mattn/gist-vim.git'
   NeoBundle 'mattn/webapi-vim.git'
-
-  " -------------------------------------------------------------------------------
-  " <NeoComplcache>
-  " -------------------------------------------------------------------------------
-
-  " Disable AutoComplPop. Comment out this line if AutoComplPop is not installed.
-  " let g:acp_enableAtStartup = 0
-
-  " Launches neocomplcache automatically on vim startup.
-  let g:neocomplcache_enable_at_startup = 1
-
-  " Use smartcase.
-  let g:neocomplcache_enable_smart_case = 1
-
-  " Use camel case completion.
-  let g:neocomplcache_enable_camel_case_completion = 1
-
-  " Use underscore completion.
-  let g:neocomplcache_enable_underbar_completion = 1
-
-  " Sets minimum char length of syntax keyword.
-  let g:neocomplcache_min_syntax_length = 3
-
-  " buffer file name pattern that locks neocomplcache. e.g. ku.vim or fuzzyfinder
-  let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-
-  " Define file-type dependent dictionaries.
-  let g:neocomplcache_dictionary_filetype_lists = {
-        \ 'default' : '',
-        \ 'vimshell' : $HOME.'/.vimshell_hist',
-        \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-  " Define keyword, for minor languages
-  if !exists('g:neocomplcache_keyword_patterns')
-    let g:neocomplcache_keyword_patterns = {}
-  endif
-  let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
-
-  " Plugin key-mappings.
-  imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-  smap <C-k>     <Plug>(neocomplcache_snippets_expand)
-  inoremap <expr><C-g>     neocomplcache#undo_completion()
-  inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
-  " SuperTab like snippets behavior.
-  imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-
-  " Recommended key-mappings.
-  " <CR>: close popup and save indent.
-  inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-
-  " <TAB>: completion.
-  inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-
-  " <C-h>, <BS>: close popup and delete backword char.
-  inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
-  inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
-  inoremap <expr><C-y>  neocomplcache#close_popup()
-  inoremap <expr><C-e>  neocomplcache#cancel_popup()
-
-  " AutoComplPop like behavior.
-  "let g:neocomplcache_enable_auto_select = 1
-
-  " Shell like behavior(not recommended).
-  "set completeopt+=longest
-  "let g:neocomplcache_enable_auto_select = 1
-  "let g:neocomplcache_disable_auto_complete = 1
-  "inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<TAB>"
-  "inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-
-  " Enable omni completion. Not required if they are already set elsewhere in .vimrc
-  autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-  autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-  autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-  autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-  autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-  " Enable heavy omni completion, which require computational power and may stall the vim.
-  if !exists('g:neocomplcache_omni_patterns')
-    let g:neocomplcache_omni_patterns = {}
-  endif
-  let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-  "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-  let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-  let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
-  let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
-
-
-  " -------------------------------------------------------------------------------
-  " <NeoSnippet>
-  " -------------------------------------------------------------------------------
-
-  " Plugin key-mappings.
-  imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-  smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-
-  " SuperTab like snippets behavior.
-  imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-  smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-  " For snippet_complete marker.
-  if has('conceal')
-    set conceallevel=2 concealcursor=i
-  endif
-
-  " -------------------------------------------------------------------------------
-  " <Hatena>
-  " -------------------------------------------------------------------------------
-
-  set runtimepath+=~/.vim/bundle/hatena
-  let g:hatena_user='sirocco634'
-
 endif
 
+" -------------------------------------------------------------------------------
+" <NeoComplcache>
+" -------------------------------------------------------------------------------
+
+" Disable AutoComplPop. Comment out this line if AutoComplPop is not installed.
+" let g:acp_enableAtStartup = 0
+
+" Launches neocomplcache automatically on vim startup.
+let g:neocomplcache_enable_at_startup = 1
+
+" Use smartcase.
+let g:neocomplcache_enable_smart_case = 1
+
+" Use camel case completion.
+let g:neocomplcache_enable_camel_case_completion = 1
+
+" Use underscore completion.
+let g:neocomplcache_enable_underbar_completion = 1
+
+" Sets minimum char length of syntax keyword.
+let g:neocomplcache_min_syntax_length = 3
+
+" buffer file name pattern that locks neocomplcache. e.g. ku.vim or fuzzyfinder
+let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
+
+" Define file-type dependent dictionaries.
+let g:neocomplcache_dictionary_filetype_lists = {
+      \ 'default' : '',
+      \ 'vimshell' : $HOME.'/.vimshell_hist',
+      \ 'scheme' : $HOME.'/.gosh_completions'
+      \ }
+
+" Define keyword, for minor languages
+if !exists('g:neocomplcache_keyword_patterns')
+  let g:neocomplcache_keyword_patterns = {}
+endif
+let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neocomplcache_snippets_expand)
+smap <C-k>     <Plug>(neocomplcache_snippets_expand)
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><C-y>  neocomplcache#close_popup()
+inoremap <expr><C-e>  neocomplcache#cancel_popup()
+
+" AutoComplPop like behavior.
+"let g:neocomplcache_enable_auto_select = 1
+
+" Shell like behavior(not recommended).
+"set completeopt+=longest
+"let g:neocomplcache_enable_auto_select = 1
+"let g:neocomplcache_disable_auto_complete = 1
+"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<TAB>"
+"inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
+
+" Enable omni completion. Not required if they are already set elsewhere in .vimrc
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion, which require computational power and may stall the vim.
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+"autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+let g:neocomplcache_omni_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.c = '\%(\.\|->\)\h\w*'
+let g:neocomplcache_omni_patterns.cpp = '\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+
+
+" -------------------------------------------------------------------------------
+" <NeoSnippet>
+" -------------------------------------------------------------------------------
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+" -------------------------------------------------------------------------------
+" Quickrun
+" -------------------------------------------------------------------------------
+
+let g:quickrun_config = {}
+let g:quickrun_config._ = {'runner' : 'vimproc'}
+
+" -------------------------------------------------------------------------------
+" <Hatena>
+" -------------------------------------------------------------------------------
+
+if has ('mac')
+  set runtimepath+=~/.vim/bundle/hatena
+  let g:hatena_user='sirocco634'
+endif
+
+" -------------------------------------------------------------------------------
 " <misc>
+" -------------------------------------------------------------------------------
+
 syntax on
 filetype on
 filetype indent on
@@ -182,16 +194,16 @@ set number            " 行番号表示
 " <statusline>
 let g:gitCurrentBranch = ''
 function! CurrentGitBranch()
-    let cwd = getcwd()
-    cd %:p:h
-    let branch = matchlist(system('/usr/bin/env git branch -a --no-color'), '\v\* ([0-9A-Za-z\/]*)\r?\n')
-    execute 'cd ' . cwd
-    if (len(branch))
-      let g:gitCurrentBranch = '[git:' . branch[1] . ']'
-    else
-      let g:gitCurrentBranch = ''
-    endif
-    return g:gitCurrentBranch
+  let cwd = getcwd()
+  cd %:p:h
+  let branch = matchlist(system('/usr/bin/env git branch -a --no-color'), '\v\* ([0-9A-Za-z\/]*)\r?\n')
+  execute 'cd ' . cwd
+  if (len(branch))
+    let g:gitCurrentBranch = '[git:' . branch[1] . ']'
+  else
+    let g:gitCurrentBranch = ''
+  endif
+  return g:gitCurrentBranch
 endfunction
 
 autocmd BufEnter * :call CurrentGitBranch()
@@ -271,10 +283,10 @@ command! EditTemporaryFile :edit `=GenerateFileName()`
 autocmd BufWritePost * :call AddExecmod()
 
 function AddExecmod()
-    let line = getline(1)
-    if strpart(line, 0, 2) == "#!"
-        call system("chmod +x ". expand("%"))
-    endif
+  let line = getline(1)
+  if strpart(line, 0, 2) == "#!"
+    call system("chmod +x ". expand("%"))
+  endif
 endfunction
 
 " === change the current directory ===
