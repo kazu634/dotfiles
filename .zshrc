@@ -163,9 +163,6 @@ fi
 
 # rbenv
 
-which rbenv > /dev/null
-RC=$?
-
-if [ ${RC} -eq 0 ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
+if [ -e ${HOME}/.rbenv/bin/rbenv ]; then
+  export PATH="${HOME}/.rbenv/bin:${PATH}"
 fi

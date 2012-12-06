@@ -10,9 +10,6 @@ fi
 
 # === rbenv ===
 
-which rbenv > /dev/null
-RC=$?
-
-if [ ${RC} -eq 0 ]; then
+if [ -e ${HOME}/.rbenv/bin/rbenv ]; then
   eval "$(rbenv init - zsh)"
 fi
