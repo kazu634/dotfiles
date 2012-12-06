@@ -11,5 +11,6 @@ fi
 # === rbenv ===
 
 if [ -e ${HOME}/.rbenv/bin/rbenv ]; then
+  PATH=${HOME}/.rbenv/bin:${PATH}
   eval "$(rbenv init - zsh)"
 fi

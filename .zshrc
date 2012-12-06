@@ -160,9 +160,3 @@ if [ "$TERM" = "screen" ]; then
         echo -n "k$host:$cmd[1]:t\\"
     }
 fi
-
-# rbenv
-
-if [ -e ${HOME}/.rbenv/bin/rbenv ]; then
-  export PATH="${HOME}/.rbenv/bin:${PATH}"
-fi
