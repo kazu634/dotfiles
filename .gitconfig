@@ -47,6 +47,9 @@
   # alias
   alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
 
+  # tags
+  tags = for-each-ref --format '%(refname) %(taggerdate)' refs/tags
+
 [github]
   user = kazu634
   token = bbc50deba1575e9fa6ebfd15c8cbffeb
