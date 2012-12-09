@@ -48,7 +48,8 @@
   alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
 
   # tags
-  tags = for-each-ref --format '%(refname) %(taggerdate)' refs/tags
+  # http://qiita.com/items/2b9d9560381bbe316818
+  tags = for-each-ref --sort=-taggerdate --format='%(taggerdate:short) %(tag) %(taggername) %(subject)' refs/tags
 
 [github]
   user = kazu634
