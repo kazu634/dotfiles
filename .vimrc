@@ -9,7 +9,6 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 
 " my bundles here:
 
-NeoBundle 'Shougo/vimproc.git'
 NeoBundle 'Shougo/neocomplcache.git'
 NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/vimshell.git'
@@ -17,7 +16,7 @@ NeoBundle 'Shougo/unite.vim.git'
 NeoBundle 'quickrun.vim'
 NeoBundle 'vim-scripts/sudo.vim'
 
-NeoBundle 'https://github.com/Shougo/vimproc.git', {
+NeoBundle 'Shougo/vimproc.git', {
       \ 'build' : {
       \     'mac'     : 'make -f make_mac.mak',
       \     'unix'    : 'make -f make_unix.mak',
