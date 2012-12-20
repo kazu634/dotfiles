@@ -109,7 +109,7 @@ setopt auto_pushd
 
 # === Aliases ===
 alias ls="ls -h"
-alias ll="ls -hl"
+alias ll="ls -ahl"
 alias cp="cp -p"
 alias ld="ls -hl | grep ^d"
 
