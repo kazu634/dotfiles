@@ -23,7 +23,7 @@ setopt auto_param_slash # ディレクトリ名の補完で末尾の / を自動
 autoload bashcompinit
 bashcompinit
 
-if [ $OSTYPE = "darwin10.0" ]; then
+if [ $OSTYPE = "darwin10.8" ]; then
   # For Mac
   GIT_COMPLETION=`find /usr/local/Cellar/git/ -type f -name "git-completion.bash" | xargs ls -t | head -1`
   source ${GIT_COMPLETION}
@@ -116,7 +116,7 @@ alias ld="ls -hl | grep ^d"
 alias screen='screen -U -D -RR'
 
 # Settings depending on the OSes
-if [ $OSTYPE = "darwin10.0" ]; then
+if [ $OSTYPE = "darwin10.8.0" ]; then
   # For Mac only
   alias eject='drutil eject'
   # ESXi
