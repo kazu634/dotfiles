@@ -119,13 +119,13 @@ alias screen='screen -U -D -RR'
 if [ $OSTYPE = "darwin10.0" ]; then
   # For Mac only
   alias eject='drutil eject'
+  # ESXi
+  alias vmstart='ssh esxi vim-cmd vmsvc/power.on'
+  alias vmstatus='ssh esxi vim-cmd vmsvc/power.getstate'
+  alias vmlist='ssh esxi vim-cmd vmsvc/getallvms'
 elif [ $OSTYPE = "linux-gnu" ]; then
   # For Linux only
-  alias vmstart='sudo virsh start'
-  alias vmstop='sudo virsh destroy'
-  alias vmlist='sudo virsh list --all'
   alias aptitude='sudo aptitude'
-  alias vmcreate='cd /home/kazu634/kvm-hdd && sudo /home/kazu634/bin/vmcreate'
   alias installed='find ~ -type f -name "*history*" | xargs grep "sudo aptitude install" | grep -v find | perl -pe "s/^.+sudo aptitude install (.*)$/\1/g" | perl -pe "s/ /\n/g" | perl -pe "s/^\n//g" | sort -u'
 fi
 
