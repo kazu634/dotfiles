@@ -15,7 +15,6 @@ setopt auto_menu # TAB で順に補完候補を切り替える
 setopt auto_list # 複数の補完候補があったときに、そのリストを自動的に表示
 setopt complete_in_word # 補完開始時にカーソルは単語の終端になくても良い。
 setopt list_types # 種類を示すマーク表示をつける(ls -fと同じもの)
-setopt extended_history # コマンド開始時のタイムスタンプと、実行時間(秒)をヒストリファイルに書き込む。
 setopt auto_param_keys # カッコの対応などを自動的に補完
 setopt auto_param_slash # ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
 
@@ -47,6 +46,8 @@ SAVEHIST=100000
 setopt hist_no_store hist_ignore_dups hist_reduce_blanks hist_ignore_space
 setopt incappendhistory sharehistory
 setopt extended_history
+setopt hist_ignore_all_dups extended_history
+setopt hist_save_no_dups
 
 function history-all { history -E 1 }
 
