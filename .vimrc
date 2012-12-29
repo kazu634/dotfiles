@@ -313,14 +313,13 @@ if has('mac')
 endif
 
 " === template ===
-if has('mac')
-  augroup templateload
-    autocmd!
-    autocmd BufNewFile *.sh 0r ~/.vim/template/skelton.sh
-    autocmd BufNewFile *.pl 0r ~/.vim/template/skelton.pl
-    autocmd BufNewFile *.scm 0r ~/.vim/template/skelton.scm
-  augroup END
-endif
+augroup templateload
+  autocmd!
+  autocmd BufNewFile *.sh  0r ~/.vim/template/skelton.sh
+  autocmd BufNewFile *.pl  0r ~/.vim/template/skelton.pl
+  autocmd BufNewFile *.scm 0r ~/.vim/template/skelton.scm
+  autocmd BufNewFile *.rb  0r ~/.vim/template/skelton.rb
+augroup END
 
 " === IME ===
 
