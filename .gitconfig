@@ -16,7 +16,7 @@
 
 [alias]
   # log関連
-  logg = log --stat --pretty=format:'%C(yellow)%h %Cgreen%ar %C(cyan)%an %Creset%s %Cred%d'
+  logg = log --stat --pretty=format:'%C(yellow)%h %Cgreen%ar %C(cyan)%an %Creset%s %Cred%d' -n 7
 
   # log + graph
   graph = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
