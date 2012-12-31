@@ -22,7 +22,7 @@ setopt auto_param_slash # ディレクトリ名の補完で末尾の / を自動
 autoload bashcompinit
 bashcompinit
 
-if [ $OSTYPE = "darwin10.8" ]; then
+if [ ${OSTYPE:0:6} = "darwin" ]; then
   # For Mac
   GIT_COMPLETION=`find /usr/local/Cellar/git/ -type f -name "git-completion.bash" | xargs ls -t | head -1`
   source ${GIT_COMPLETION}
