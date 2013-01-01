@@ -17,6 +17,7 @@ NeoBundle 'quickrun.vim'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'h1mesuke/vim-alignta'
+NeoBundle 'kana/vim-smartchr'
 
 NeoBundle 'Shougo/vimproc.git', {
       \ 'build' : {
@@ -153,6 +154,16 @@ if has ('mac')
   set runtimepath+=~/.vim/bundle/hatena
   let g:hatena_user='sirocco634'
 endif
+
+" -------------------------------------------------------------------------------
+" <smarchr>
+" -------------------------------------------------------------------------------
+
+inoremap <buffer><expr> = smartchr#loop(' = ', ' == ', ' === ')
+inoremap <buffer><expr> + smartchr#loop(' + ', '++')
+inoremap <buffer><expr> - smartchr#loop(' - ', '--')
+inoremap <buffer><expr> / smartchr#loop(' / ', '// ')
+inoremap <buffer><expr> * smartchr#loop(' * ', '*')
 
 " -------------------------------------------------------------------------------
 " <misc>
