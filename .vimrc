@@ -19,6 +19,7 @@ NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'AutoClose'
 
 NeoBundle 'Shougo/vimproc.git', {
       \ 'build' : {
