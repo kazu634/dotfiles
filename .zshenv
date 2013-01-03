@@ -1,16 +1,20 @@
 # === Path ===
 
-if [ $OSTYPE = "darwin10.0" ]; then
-  # For Mac only
-  export PATH=/Users/kazu634/bin:/opt/local/bin:/opt/local/sbin:/usr/local/bin:/usr/local/texlive/2011/bin/universal-darwin/:$PATH
-elif [ $OSTYPE = "linux-gnu" ]; then
-  # For Linux only
-  export PATH=/home/kazu634/bin:$PATH
-fi
+case ${OSTYPE} in
+  darwin*)
+    # For Mac only
+    export PATH=/Users/kazu634/bin:$PATH
+    ;;
+  linux*)
+    # For Linux only
+    export PATH=/home/kazu634/bin:$PATH
+    ;;
+esac
 
 # === rbenv ===
 
 if [ -e ${HOME}/.rbenv/bin/rbenv ]; then
   PATH=${HOME}/.rbenv/bin:${PATH}
+  export PATH
   eval "$(rbenv init - zsh)"
 fi
