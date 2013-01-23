@@ -331,10 +331,11 @@ endif
 " === template ===
 augroup templateload
   autocmd!
-  autocmd BufNewFile *.sh  0r ~/.vim/template/skelton.sh
-  autocmd BufNewFile *.pl  0r ~/.vim/template/skelton.pl
-  autocmd BufNewFile *.scm 0r ~/.vim/template/skelton.scm
-  autocmd BufNewFile *.rb  0r ~/.vim/template/skelton.rb
+  autocmd BufNewFile *.sh      0r ~/.vim/template/skelton.sh
+  autocmd BufNewFile *.pl      0r ~/.vim/template/skelton.pl
+  autocmd BufNewFile *.scm     0r ~/.vim/template/skelton.scm
+  autocmd BufNewFile test_*.rb 0r ~/.vim/template/skelton_test.rb
+  autocmd BufNewFile *.rb      0r ~/.vim/template/skelton.rb
 augroup END
 
 " === IME ===
