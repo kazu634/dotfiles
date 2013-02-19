@@ -20,6 +20,7 @@ NeoBundle 'h1mesuke/vim-alignta'
 NeoBundle 'kana/vim-smartchr'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'AutoClose'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 
 NeoBundle 'Shougo/vimproc.git', {
       \ 'build' : {
@@ -346,3 +347,11 @@ inoremap <silent> <C-[> <Esc>
 
 " 「日本語入力固定モード」切り替えキー
 inoremap <silent> <C-j> <C-^>
+
+" === indent-guide ===
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
+
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=LightBlue ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=4
