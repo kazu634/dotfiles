@@ -260,6 +260,7 @@ add-zsh-hook precmd _update_vcs_info_msg
 
 # === Direcotry ===
 setopt auto_pushd
+setopt PUSHD_IGNORE_DUPS
 
 # === Aliases ===
 alias ls="ls -h"
