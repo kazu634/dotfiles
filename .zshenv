@@ -22,12 +22,4 @@ case ${OSTYPE} in
     eval "$(rbenv init - zsh)"
   fi
   ;;
-  darwin*)
-  # for Mac Only
-  if [ -e /usr/local/bin/rbenv ]; then
-    PATH=${HOME}/.rbenv/bin:${PATH}
-    export PATH
-    eval "$(/usr/local/bin/rbenv init - zsh)"
-  fi
-  ;;
 esac
