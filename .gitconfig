@@ -62,3 +62,7 @@
 [pull]
   # from 1.7.9
   rebase = true
+
+[redmine]
+  url = http://redmine.kazu634.com
+  apikey = 0ef327825035b0c8d0405d46bcb3f114f7818ff1
