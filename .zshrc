@@ -353,3 +353,9 @@ ls_abbrev() {
     echo "$ls_result"
   fi
 }
+
+# === AWS setting ===
+
+if [ -f ~/.aws_setuprc ]; then
+  source ~/.aws_setuprc
+fi
