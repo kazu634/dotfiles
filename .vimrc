@@ -7,6 +7,8 @@ endif
 
 call neobundle#rc(expand('~/.vim/bundle/'))
 
+NeoBundleFetch "Shougo/neobundle.vim"
+
 " my bundles here:
 
 NeoBundle 'Shougo/neocomplcache.git'
