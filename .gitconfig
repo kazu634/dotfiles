@@ -56,7 +56,7 @@
   update = "!sh -c 'git ft; git rsm; git delete-merged-branches'"
   ft = fetch --prune
   rsm = update-ref refs/heads/master origin/master
-  delete-merged-branches = !"brs=`git branch --merged master | grep -v master | grep -v '*'` && git branch -D $brs || true"
+  delete-merged-branches = !"brs=`git branch --merged master | grep -Ev '(master|dev)' | grep -v '*'` && git branch -D $brs || true"
 
 [github]
   user = kazu634
