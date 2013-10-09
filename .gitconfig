@@ -51,6 +51,13 @@
   # http://qiita.com/items/2b9d9560381bbe316818
   tags = for-each-ref --sort=-taggerdate --format='%(taggerdate:short) %(tag) %(taggername) %(subject)' refs/tags
 
+  # git update
+  # http://qiita.com/tomy_kaira/items/2e1d575202e14a28b600
+  update = "!sh -c 'git ft; git rsm; git delete-merged-branches'"
+  ft = fetch --prune
+  rsm = update-ref refs/heads/master origin/master
+  delete-merged-branches = !"brs=`git branch --merged master | grep -v master | grep -v '*'` && git branch -D $brs || true"
+
 [github]
   user = kazu634
   token = bbc50deba1575e9fa6ebfd15c8cbffeb
