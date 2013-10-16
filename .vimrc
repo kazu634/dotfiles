@@ -23,6 +23,7 @@ NeoBundle 'kana/vim-smartchr'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'AutoClose'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'honza/vim-snippets'
 
 NeoBundle 'Shougo/vimproc.git', {
       \ 'build' : {
@@ -144,6 +145,11 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
+" Enable snipMate compatibility feature.
+let g:neosnippet#enable_snipmate_compatibility = 1
+
+" Tell Neosnippet about the other snippets
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets, ~/.vim/snippets'
 " -------------------------------------------------------------------------------
 " Quickrun
 " -------------------------------------------------------------------------------
