@@ -146,6 +146,14 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets, ~/.vim/snippets'
+
+" Load rspec.snip when loading rspec files
+function! s:RSpecSnippet()
+  NeoSnippetSource ~/.vim/snippets/serverspec.snip
+endfunction
+
+autocmd BufEnter *_spec.rb call s:RSpecSnippet()
+
 " -------------------------------------------------------------------------------
 " Quickrun
 " -------------------------------------------------------------------------------
