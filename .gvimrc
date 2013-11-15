@@ -5,4 +5,4 @@ colorscheme murphy
 set guifont=Osaka-Mono:h17
 
 " <IME>
-set imdisableactivate
+set imdisable
