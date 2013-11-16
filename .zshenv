@@ -14,7 +14,7 @@ esac
 # === rbenv ===
 
 case ${OSTYPE} in
-  linux*)
+  *)
   # for Linux Only
   if [ -e ${HOME}/.rbenv/bin/rbenv ]; then
     PATH=${HOME}/.rbenv/bin:${PATH}
