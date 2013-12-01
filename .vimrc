@@ -24,6 +24,7 @@ NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'AutoClose'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'honza/vim-snippets'
+NeoBundle 'mattn/emmet-vim'
 
 NeoBundle 'Shougo/vimproc.git', {
       \ 'build' : {
