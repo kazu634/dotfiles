@@ -25,6 +25,7 @@ NeoBundle 'AutoClose'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'jiangmiao/simple-javascript-indenter'
 
 NeoBundle 'Shougo/vimproc.git', {
       \ 'build' : {
@@ -368,3 +369,9 @@ let g:indent_guides_enable_on_vim_startup = 1
 
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=LightBlue ctermbg=3
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=darkgrey ctermbg=4
+
+" === simple-javascript-indenter ===
+" shiftwidthを1にしてインデントしてくれる
+let g:SimpleJsIndenter_BriefMode = 1
+" この設定入れるとswitchのインデントがいくらかマシに
+let g:SimpleJsIndenter_CaseIndentLevel = -1
