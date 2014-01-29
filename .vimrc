@@ -26,6 +26,7 @@ NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'honza/vim-snippets'
 NeoBundle 'mattn/emmet-vim'
 NeoBundle 'jiangmiao/simple-javascript-indenter'
+NeoBundle 'Shougo/neosnippet-snippets'
 
 NeoBundle 'Shougo/vimproc.git', {
       \ 'build' : {
