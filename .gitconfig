@@ -15,7 +15,7 @@
 
 [alias]
   # log関連
-  logg = log --stat --pretty=format:'%C(yellow)%h %Cgreen%ar %C(cyan)%an %Creset%s %Cred%d' -n 7 -p
+  logg = log --decorate --stat --patch
 
   # log + graph
   graph = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
@@ -56,6 +56,7 @@
   ft = fetch --prune
   rsm = update-ref refs/heads/master origin/master
   delete-merged-branches = !"brs=`git branch --merged master | grep -Ev '(master|dev)' | grep -v '*'` && git branch -D $brs || true"
+  up = "!git remote update -p; git merge --ff-only @{u}; git delete-merged-branches"
 
 [github]
   user = kazu634
