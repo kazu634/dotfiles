@@ -15,7 +15,7 @@
 
 [alias]
   # log関連
-  logg = log --decorate --stat --patch
+  logg = log --pretty=format:'%C(yellow)%h%Creset %<(70,trunc)%s %<(20,trunc)%C(blue)%an %C(green)%ar%Creset'
 
   # log + graph
   graph = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
