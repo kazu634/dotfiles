@@ -40,7 +40,7 @@
   prep = !git init && git add . && git commit -m \"initial commit\"
 
   # add
-  a = !git add . && git status
+  a = !git add . && git now
   au = !git add -u && git status
 
   # alias
