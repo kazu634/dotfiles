@@ -58,6 +58,9 @@
   delete-merged-branches = !"brs=`git branch --merged master | grep -Ev '(master|dev)' | grep -v '*'` && git branch -D $brs || true"
   up = "!git remote update -p; git merge --ff-only @{u}; git delete-merged-branches"
 
+  # git now rebase
+  nr = "!git now rebase"
+
 [github]
   user = kazu634
   token = bbc50deba1575e9fa6ebfd15c8cbffeb
