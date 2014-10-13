@@ -37,7 +37,6 @@ NeoBundle 'Shougo/vimproc.git', {
       \ }
 
 if has ('mac')
-  NeoBundle 'motemen/hatena-vim'
   NeoBundle 'vim-scripts/VimRepress.git'
   NeoBundle 'mattn/gist-vim.git'
   NeoBundle 'mattn/webapi-vim.git'
@@ -164,15 +163,6 @@ autocmd BufEnter *_spec.rb call s:RSpecSnippet()
 
 let g:quickrun_config = {}
 let g:quickrun_config._ = {'runner' : 'vimproc'}
-
-" -------------------------------------------------------------------------------
-" <Hatena>
-" -------------------------------------------------------------------------------
-
-if has ('mac')
-  set runtimepath+=~/.vim/bundle/hatena
-  let g:hatena_user='sirocco634'
-endif
 
 " -------------------------------------------------------------------------------
 " <smarchr>
