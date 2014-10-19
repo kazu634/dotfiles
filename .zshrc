@@ -1,4 +1,14 @@
 # === Completition ===
+
+# zsh-completions
+case ${OSTYPE} in
+  darwin*)
+    # for mac
+    fpath=(/usr/local/share/zsh-completions $fpath)
+    ;;
+esac
+
+# General completion config
 autoload -U compinit
 compinit
 
