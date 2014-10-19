@@ -1,4 +1,14 @@
 # === Completition ===
+
+# zsh-completions
+case ${OSTYPE} in
+  darwin*)
+    # for mac
+    fpath=(/usr/local/share/zsh-completions $fpath)
+    ;;
+esac
+
+# General completion config
 autoload -U compinit
 compinit
 
@@ -54,6 +64,32 @@ setopt hist_ignore_all_dups extended_history
 setopt hist_save_no_dups
 
 function history-all { history -E 1 }
+
+# use `peco` to see the history:
+if which peco > /dev/null; then
+  # statements
+  function peco-select-history() {
+    local tac
+
+    if which tac > /dev/null; then
+      tac="tac"
+    else
+      tac="tail -r"
+    fi
+
+    BUFFER=$(history -n 1 | \
+      eval $tac | \
+      peco --query "$LBUFFER")
+
+    CURSOR=$#BUFFER
+    zle clear-screen
+  }
+
+  zle -N peco-select-history
+
+  bindkey '^r' peco-select-history
+fi
+
 
 # === Key Bind ===
 bindkey -e
@@ -358,4 +394,24 @@ ls_abbrev() {
 
 if [ -f ~/.aws_setuprc ]; then
   source ~/.aws_setuprc
+fi
+
+# cdr configuration
+autoload -Uz add-zsh-hook
+autoload -Uz chpwd_recent_dirs cdr
+add-zsh-hook chpwd chpwd_recent_dirs
+
+if which peco > /dev/null; then
+  function peco-cdr () {
+      local selected_dir=$(cdr -l | awk '{ print $2 }' | peco)
+      if [ -n "$selected_dir" ]; then
+          BUFFER="cd ${selected_dir}"
+          zle accept-line
+      fi
+      zle clear-screen
+  }
+
+  zle -N peco-cdr
+
+  bindkey '^@' peco-cdr
 fi
