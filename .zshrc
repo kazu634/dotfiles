@@ -65,6 +65,32 @@ setopt hist_save_no_dups
 
 function history-all { history -E 1 }
 
+# use `peco` to see the history:
+if which peco > /dev/null; then
+  # statements
+  function peco-select-history() {
+    local tac
+
+    if which tac > /dev/null; then
+      tac="tac"
+    else
+      tac="tail -r"
+    fi
+
+    BUFFER=$(history -n 1 | \
+      eval $tac | \
+      peco --query "$LBUFFER")
+
+    CURSOR=$#BUFFER
+    zle clear-screen
+  }
+
+  zle -N peco-select-history
+
+  bindkey '^r' peco-select-history
+fi
+
+
 # === Key Bind ===
 bindkey -e
 
