@@ -61,6 +61,9 @@
   # git now rebase
   nr = "!git now rebase"
 
+  # git mkbranch = git co -b [branch name]
+  mkbranch = checkout -b
+
 [github]
   user = kazu634
   token = bbc50deba1575e9fa6ebfd15c8cbffeb
