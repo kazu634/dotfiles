@@ -395,3 +395,23 @@ ls_abbrev() {
 if [ -f ~/.aws_setuprc ]; then
   source ~/.aws_setuprc
 fi
+
+# cdr configuration
+autoload -Uz add-zsh-hook
+autoload -Uz chpwd_recent_dirs cdr
+add-zsh-hook chpwd chpwd_recent_dirs
+
+if which peco > /dev/null; then
+  function peco-cdr () {
+      local selected_dir=$(cdr -l | awk '{ print $2 }' | peco)
+      if [ -n "$selected_dir" ]; then
+          BUFFER="cd ${selected_dir}"
+          zle accept-line
+      fi
+      zle clear-screen
+  }
+
+  zle -N peco-cdr
+
+  bindkey '^@' peco-cdr
+fi
