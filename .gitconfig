@@ -64,6 +64,10 @@
   # git mkbranch = git co -b [branch name]
   mkbranch = checkout -b
 
+  # git empty = git commit --allow-empty
+  empty = commit --allow-empty -m "[WIP] " -e
+
+
 [github]
   user = kazu634
   token = bbc50deba1575e9fa6ebfd15c8cbffeb
