@@ -1,0 +1,10 @@
+{
+  "Keymap": {
+    "C-j": "peco.Finish"
+  },
+  "Style": {
+    "Selected": ["underline", "reverse"],
+    "Query": ["yellow", "bold"],
+    "Matched": ["green"]
+  }
+}
