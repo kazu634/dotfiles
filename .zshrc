@@ -305,6 +305,7 @@ alias cp="cp -p"
 alias ld="ls -hl | grep ^d"
 
 alias screen='screen -U -D -RR'
+alias tmux="if tmux has; then tmux attach; else tmux new; fi"
 
 # Settings depending on the OSes
 if [ $OSTYPE = "darwin10.8.0" ]; then
