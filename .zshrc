@@ -308,18 +308,22 @@ alias screen='screen -U -D -RR'
 alias tmux="if tmux has; then tmux attach; else tmux new; fi"
 
 # Settings depending on the OSes
-if [ $OSTYPE = "darwin10.8.0" ]; then
-  # For Mac only
-  alias eject='drutil eject'
-  # ESXi
-  alias vmstart='ssh esxi vim-cmd vmsvc/power.on'
-  alias vmstatus='ssh esxi vim-cmd vmsvc/power.getstate'
-  alias vmlist='ssh esxi vim-cmd vmsvc/getallvms'
-elif [ $OSTYPE = "linux-gnu" ]; then
-  # For Linux only
-  alias aptitude='sudo aptitude'
-  alias installed='find ~ -type f -name "*history*" | xargs grep "sudo aptitude install" | grep -v find | perl -pe "s/^.+sudo aptitude install (.*)$/\1/g" | perl -pe "s/ /\n/g" | perl -pe "s/^\n//g" | sort -u'
-fi
+case ${OSTYPE} in
+  darwin*)
+    # For Mac
+    alias eject='drutil eject'
+    # ESXi
+    alias vmstart='ssh esxi vim-cmd vmsvc/power.on'
+    alias vmstatus='ssh esxi vim-cmd vmsvc/power.getstate'
+    alias vmlist='ssh esxi vim-cmd vmsvc/getallvms'
+    ;;
+
+  linux*)
+    # For Linux only
+    alias aptitude='sudo aptitude'
+    alias installed='find ~ -type f -name "*history*" | xargs grep "sudo aptitude install" | grep -v find | perl -pe "s/^.+sudo aptitude install (.*)$/\1/g" | perl -pe "s/ /\n/g" | perl -pe "s/^\n//g" | sort -u'
+    ;;
+esac
 
 # Gauche + rlwrap
 which rlwrap > /dev/null
