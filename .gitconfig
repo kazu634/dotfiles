@@ -19,6 +19,8 @@
 
   lpatch = !git logg -p
 
+  lstat = !git logg --stat
+
   # log + graph
   graph = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
 
