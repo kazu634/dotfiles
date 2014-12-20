@@ -278,10 +278,10 @@ set statusline+=\ \   " 空白スペース2個
 set statusline+=%P    " ファイル内の何％の位置にあるか
 
 " <indent>
-set tabstop=4
+set tabstop=2
 set expandtab     " tab をスペースに展開
 set shiftwidth=2  " 自動インデントの幅
-set softtabstop=4
+set softtabstop=2
 
 autocmd FileType make setlocal noexpandtab
 
