@@ -420,3 +420,9 @@ if which peco > /dev/null; then
 
   bindkey '^@' peco-cdr
 fi
+
+# === gim: `git ls-files` + `peco` ===
+# see: http://qiita.com/la_luna_azul/items/7998abd0379e8a3248f4
+function gim() {
+  vim `git ls-files . | peco`
+}
