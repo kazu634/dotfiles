@@ -423,6 +423,16 @@ fi
 
 # === gim: `git ls-files` + `peco` ===
 # see: http://qiita.com/la_luna_azul/items/7998abd0379e8a3248f4
-function gim() {
-  vim `git ls-files . | peco`
-}
+# check whether `peco` exists
+if which peco > /dev/null; then
+  function gim () {
+    # check whether the current directory is under `git` repository.
+    if git rev-parse 2> /dev/null; then
+      local selected_file=$(git ls-files . | peco)
+
+      if [ -n "${selected_file}" ]; then
+        vi ${selected_file}
+      fi
+    fi
+  }
+fi
