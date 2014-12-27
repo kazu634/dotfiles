@@ -15,11 +15,9 @@
 
 [alias]
   # log関連
-  logg = !git log --pretty=format:'%C(yellow)%h%Creset %<(70,trunc)%s %<(20,trunc)%C(blue)%an %C(green)%ar%Creset' --reverse master..`git symbolic-ref HEAD`
+  logg = !git log --pretty=format:'%C(yellow)%h%Creset %<(70,trunc)%s %<(20,trunc)%C(blue)%an %C(green)%ar%Creset' --reverse --stat master..`git symbolic-ref HEAD`
 
   lpatch = !git logg -p
-
-  lstat = !git logg --stat
 
   # log + graph
   graph = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
