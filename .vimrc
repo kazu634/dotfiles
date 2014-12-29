@@ -336,14 +336,6 @@ augroup grlcd
   autocmd BufEnter * lcd %:p:h
 augroup END
 
-" === Invole copen command when vimgrep or so
-if has('mac')
-  augroup grepopen
-    autocmd!
-    autocmd QuickFixCmdPo vimgrep cwindow
-  augroup END
-endif
-
 " === template ===
 augroup templateload
   autocmd!
