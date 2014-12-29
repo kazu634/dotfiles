@@ -317,6 +317,8 @@ case ${OSTYPE} in
     alias vmstart='ssh esxi vim-cmd vmsvc/power.on'
     alias vmstatus='ssh esxi vim-cmd vmsvc/power.getstate'
     alias vmlist='ssh esxi vim-cmd vmsvc/getallvms'
+    # vim
+    alias vi="`find /opt/homebrew-cask/Caskroom/macvim -name 'Vim' | xargs ls -1t | head -1`"
     ;;
 
   linux*)
