@@ -15,7 +15,7 @@ NeoBundle 'Shougo/neocomplcache.git'
 NeoBundle 'Shougo/neosnippet.git'
 NeoBundle 'Shougo/vimshell.git'
 NeoBundle 'Shougo/unite.vim.git'
-NeoBundle 'quickrun.vim'
+NeoBundle "thinca/vim-quickrun"
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'tpope/vim-surround.git'
 NeoBundle 'h1mesuke/vim-alignta'
@@ -28,6 +28,9 @@ NeoBundle 'mattn/emmet-vim'
 NeoBundle 'jiangmiao/simple-javascript-indenter'
 NeoBundle 'OpsRockin/opscode_chef.vim_dict'
 NeoBundle 'Shougo/neosnippet-snippets'
+
+NeoBundle "osyo-manga/shabadou.vim"
+NeoBundle "osyo-manga/vim-watchdogs"
 
 NeoBundle 'Shougo/vimproc.git', {
       \ 'build' : {
@@ -161,7 +164,7 @@ let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets, ~/.vim
 
 " Load rspec.snip when loading rspec files
 function! s:RSpecSnippet()
-  NeoSnippetSource ~/.vim/snippets/serverspec.snip
+  NeoSnippetSource ~/.vim/snippets/ruby.serverspec.snip
 endfunction
 
 autocmd BufEnter *_spec.rb call s:RSpecSnippet()
@@ -336,14 +339,6 @@ augroup grlcd
   autocmd BufEnter * lcd %:p:h
 augroup END
 
-" === Invole copen command when vimgrep or so
-if has('mac')
-  augroup grepopen
-    autocmd!
-    autocmd QuickFixCmdPo vimgrep cwindow
-  augroup END
-endif
-
 " === template ===
 augroup templateload
   autocmd!
@@ -410,4 +405,26 @@ endfunction
 augroup cwh
   autocmd!
   autocmd CursorMoved,CursorMovedI * call s:HighlightCurrentWord()
+augroup END
+
+" 書き込み後にシンタックスチェックを行う
+let g:watchdogs_check_BufWritePost_enable = 1
+
+" watchdogsのフックを設定
+let g:quickrun_config["watchdogs_checker/_"] = {
+      \ "hook/qfstatusline_update/enable_exit" : 1,
+      \ "hook/qfstatusline_update/priority_exit" : 4,
+      \ }
+
+let g:quickrun_config = {
+  \     "ruby/watchdogs_checker" : {
+  \       "type" : "watchdogs_checker/rubocop"
+  \     }
+  \ }
+
+augroup QfAutoCommands
+  autocmd!
+
+  " Auto-close quickfix window
+  autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | quit | endif
 augroup END
