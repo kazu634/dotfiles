@@ -71,7 +71,7 @@
 
 
   # git r, meaning `git rebase -i HEAD~` from the 1st commit in the current branch to the last.
-  r = "!git rebase -i HEAD~$(git log --pretty=oneline master..$(git symbolic-ref HEAD) | wc -l | sed -Ee 's/ +//')"
+  r = "!git rebase --keep-empty -i HEAD~$(git log --pretty=oneline master..$(git symbolic-ref HEAD) | wc -l | sed -Ee 's/ +//')"
 
 [github]
   user = kazu634
