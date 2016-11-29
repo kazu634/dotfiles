@@ -320,6 +320,7 @@ case ${OSTYPE} in
   linux*)
     # For Linux only
     alias aptitude='sudo aptitude'
+    alias apt='sudo apt'
     alias installed='find ~ -type f -name "*history*" | xargs grep "sudo aptitude install" | grep -v find | perl -pe "s/^.+sudo aptitude install (.*)$/\1/g" | perl -pe "s/ /\n/g" | perl -pe "s/^\n//g" | sort -u'
     ;;
 esac
