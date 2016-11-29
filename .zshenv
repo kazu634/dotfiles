@@ -23,3 +23,13 @@ case ${OSTYPE} in
   fi
   ;;
 esac
+
+# === nodebrew ===
+case ${OSTYPE} in
+  *)
+  if [ -e /usr/local/bin/nodebrew ]; then
+    PATH=${HOME}/.nodebrew/current/bin:${PATH}
+    export PATH
+  fi
+  ;;
+esac

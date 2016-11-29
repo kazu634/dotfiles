@@ -73,6 +73,8 @@
   # git r, meaning `git rebase -i HEAD~` from the 1st commit in the current branch to the last.
   r = "!git rebase --keep-empty -i HEAD~$(git log --pretty=oneline master..$(git symbolic-ref HEAD) | wc -l | sed -Ee 's/ +//')"
 
+  modified = "!git diff-tree --no-commit-id --name-only -r master..$(git symbolic-ref HEAD)"
+
 [github]
   user = kazu634
   token = bbc50deba1575e9fa6ebfd15c8cbffeb
