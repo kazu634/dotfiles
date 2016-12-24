@@ -314,7 +314,7 @@ case ${OSTYPE} in
     # For Mac
     alias eject='drutil eject'
     # vim
-    alias vi="`find /usr/local/Caskroom/macvim -name 'Vim' | xargs ls -1t | head -1`"
+    alias vi='/usr/local/bin/mvim'
     ;;
 
   linux*)
