@@ -1,3 +1,5 @@
+export ZDOTDIR=$HOME/.zsh.d
+
 # === Path ===
 
 case ${OSTYPE} in
