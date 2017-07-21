@@ -11,7 +11,7 @@
   grep = auto
 
 [core]
-	editor = /usr/local/bin/mvim
+	editor = /usr/local/bin/vim
 
 [alias]
   # log関連
