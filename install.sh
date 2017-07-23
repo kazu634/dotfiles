@@ -18,10 +18,16 @@ if [ ${OS} = "Linux" ]; then # if linux
   # copying the `peco` configuration file as a soft link
   ln -f -s ${CURDIR}/.peco ${HOME}
 
+  # copying the `.zsh.d` configuration file as a soft link
+  ln -f -s ${CURDIR}/.zsh.d ${HOME}
+
 else # otherwise (meaning Darwin)
   # copying the .files as a soft link
   find ${CURDIR} -type f -name ".*" ! -name ".*.swp" -maxdepth 1 -print0 | xargs -0 -J % ln -f -s % ${HOME} 2>/dev/null
 
   # copying the `peco` configuration file as a soft link
   ln -f -s ${CURDIR}/.peco ${HOME}
+
+  # copying the `.zsh.d` configuration file as a soft link
+  ln -f -s ${CURDIR}/.zsh.d ${HOME}
 fi
