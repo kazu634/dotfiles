@@ -13,19 +13,6 @@ case ${OSTYPE} in
     ;;
 esac
 
-# === rbenv ===
-
-case ${OSTYPE} in
-  *)
-  # for Linux Only
-  if [ -e ${HOME}/.rbenv/bin/rbenv ]; then
-    PATH=${HOME}/.rbenv/bin:${PATH}
-    export PATH
-    eval "$(rbenv init - zsh)"
-  fi
-  ;;
-esac
-
 # === nodebrew ===
 case ${OSTYPE} in
   *)

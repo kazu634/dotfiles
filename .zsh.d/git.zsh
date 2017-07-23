@@ -186,7 +186,7 @@
           prompt="${(j: :)messages}"
       fi
 
-      RPROMPT="$prompt"
+      RPROMPT="$prompt [%~]"
   }
 
   add-zsh-hook precmd _update_vcs_info_msg
