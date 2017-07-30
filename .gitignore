@@ -40,3 +40,4 @@ working
 .zhistory
 Eye-Fi Card.log
 tmux-*.log
+.zcompcache/
