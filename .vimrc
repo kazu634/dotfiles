@@ -13,7 +13,6 @@ NeoBundleFetch "Shougo/neobundle.vim"
 
 NeoBundle 'Shougo/neocomplcache.git'
 NeoBundle 'Shougo/neosnippet.git'
-NeoBundle 'Shougo/vimshell.git'
 NeoBundle 'Shougo/unite.vim.git'
 NeoBundle "thinca/vim-quickrun"
 NeoBundle 'vim-scripts/sudo.vim'
@@ -29,8 +28,7 @@ NeoBundle 'jiangmiao/simple-javascript-indenter'
 NeoBundle 'OpsRockin/opscode_chef.vim_dict'
 NeoBundle 'Shougo/neosnippet-snippets'
 
-NeoBundle "osyo-manga/shabadou.vim"
-NeoBundle "osyo-manga/vim-watchdogs"
+NeoBundle 'w0rp/ale'
 
 NeoBundle 'Shougo/vimproc.git', {
       \ 'build' : {
@@ -38,12 +36,6 @@ NeoBundle 'Shougo/vimproc.git', {
       \     'unix'    : 'make -f make_unix.mak',
       \    },
       \ }
-
-if has ('mac')
-  NeoBundle 'vim-scripts/VimRepress.git'
-  NeoBundle 'mattn/gist-vim.git'
-  NeoBundle 'mattn/webapi-vim.git'
-endif
 
 call neobundle#end()
 
@@ -180,7 +172,7 @@ let g:quickrun_config._ = {'runner' : 'vimproc'}
 " <smarchr>
 " -------------------------------------------------------------------------------
 
-inoremap <buffer><expr> = smartchr#loop('=', ' = ', ' => ', ' == ', " === ")
+inoremap <buffer><expr> = smartchr#loop('=', ' = ', ' := ', ' => ', ' == ', " === ")
 inoremap <buffer><expr> + smartchr#loop('+', ' + ', '++', ' += ')
 inoremap <buffer><expr> - smartchr#loop('-', ' - ', '--', ' -= ')
 inoremap <buffer><expr> / smartchr#loop('/', ' / ', '// ')
@@ -201,15 +193,6 @@ filetype plugin on
 set list
 set listchars=trail:_,tab:>-
 
-
-" <gauche>
-autocmd FileType scheme :let is_gauche=1
-
-" http://d.hatena.ne.jp/tanakaBox/20070609/1181382818
-aug Scheme
-  au!
-  au Filetype scheme setl cindent& lispwords=define,lambda
-aug END
 
 " <encoding>
 set encoding=utf-8
@@ -313,16 +296,6 @@ augroup END
 :hi CursorLine gui=underline
 highlight CursorLine ctermbg=black guibg=black
 
-" === junkフォルダに一時ファイルを作成 ===
-function! GenerateFileName()
-  let now = localtime()
-  let extention = input("Extention?: ")
-  let filename =  strftime("%Y-%m-%d-%H%M%S", now) . "." . extention
-  return "/Users/kazu634/junk/" . filename
-endfunction
-
-command! EditTemporaryFile :edit `=GenerateFileName()`
-
 " === Shebang がある時に実行権限を自動付与===
 autocmd BufWritePost * :call AddExecmod()
 
@@ -407,24 +380,9 @@ augroup cwh
   autocmd CursorMoved,CursorMovedI * call s:HighlightCurrentWord()
 augroup END
 
-" 書き込み後にシンタックスチェックを行う
-let g:watchdogs_check_BufWritePost_enable = 1
-
-" watchdogsのフックを設定
-let g:quickrun_config["watchdogs_checker/_"] = {
-      \ "hook/qfstatusline_update/enable_exit" : 1,
-      \ "hook/qfstatusline_update/priority_exit" : 4,
-      \ }
-
-let g:quickrun_config = {
-  \     "ruby/watchdogs_checker" : {
-  \       "type" : "watchdogs_checker/rubocop"
-  \     }
-  \ }
-
-augroup QfAutoCommands
-  autocmd!
-
-  " Auto-close quickfix window
-  autocmd WinEnter * if (winnr('$') == 1) && (getbufvar(winbufnr(0), '&buftype')) == 'quickfix' | quit | endif
-augroup END
+let g:ale_sign_error = '!!'
+let g:ale_sign_warning = '=='
+let g:ale_sign_column_always = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
