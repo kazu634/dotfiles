@@ -16,7 +16,7 @@ esac
 # === nodebrew ===
 case ${OSTYPE} in
   *)
-  if [ -e /usr/local/bin/nodebrew ]; then
+  if [ -e /${HOME}/.nodebrew/nodebrew ]; then
     PATH=${HOME}/.nodebrew/current/bin:${PATH}
     export PATH
   fi
