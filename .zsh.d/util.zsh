@@ -56,6 +56,8 @@
   : 関数の定義 && {
     if which peco > /dev/null; then
       function peco-cdr () {
+          my-compact-chpwd-recent-dirs
+
           local selected_dir=$(cdr -l | awk '{ print $2 }' | peco)
           if [ -n "$selected_dir" ]; then
               BUFFER="cd ${selected_dir}"
@@ -66,8 +68,22 @@
 
       zle -N peco-cdr
 
-      bindkey '^@' peco-cdr
     fi
+  }
+
+  : メンテナンス && {
+    # http://blog.n-z.jp/blog/2014-07-25-compact-chpwd-recent-dirs.html
+    function my-compact-chpwd-recent-dirs () {
+      emulate -L zsh
+      setopt extendedglob
+      local -aU reply
+      integer history_size
+      autoload -Uz chpwd_recent_filehandler
+      chpwd_recent_filehandler
+      history_size=$#reply
+      reply=(${^reply}(N))
+      (( $history_size == $#reply )) || chpwd_recent_filehandler $reply
+    }
   }
 }
 
