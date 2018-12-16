@@ -67,6 +67,7 @@
       }
 
       zle -N peco-cdr
+    bindkey '^x' peco-cdr
 
     fi
   }
