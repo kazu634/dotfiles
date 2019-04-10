@@ -5,7 +5,7 @@
   alias ld="ls -hl | grep ^d"
 
   alias screen='screen -U -D -RR'
-  alias tmux="if tmux has; then tmux attach; else tmux new; fi"
+  alias tmux="if tmux has; then tmux attach -d; else tmux new; fi"
 
   # Settings depending on the OSes
   case ${OSTYPE} in
