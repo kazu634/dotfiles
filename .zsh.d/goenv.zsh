@@ -12,6 +12,9 @@ case ${OSTYPE} in
     export GOPATH="$HOME/src"
     export PATH="$GOENV_ROOT/bin:$GOPATH/bin:$PATH"
 
+    export GOENV_DISABLE_GOPATH=1
+
     eval "$(goenv init -)"
   fi
 esac
+
