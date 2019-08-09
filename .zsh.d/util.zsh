@@ -67,8 +67,14 @@
       }
 
       zle -N peco-cdr
-    bindkey '^x' peco-cdr
-
+      case ${OSTYPE} in
+        darwin*)
+          bindkey '^@' peco-cdr
+          ;;
+        linux*)
+          bindkey '^x' peco-cdr
+          ;;
+      esac
     fi
   }
 
