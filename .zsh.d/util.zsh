@@ -88,11 +88,11 @@
   }
 }
 
-: history + peco function && {
-  # use `peco` to see the history:
+: history + fzf function && {
+  # use `fzf` to see the history:
   if which peco > /dev/null; then
     # statements
-    function peco-select-history() {
+    function fzf-select-history() {
       local tac
 
       if which tac > /dev/null; then
@@ -104,14 +104,14 @@
       BUFFER=$(history -n 1 | \
         eval $tac | \
         awk '!a[$0]++' | \
-        peco --query "$LBUFFER")
+        fzf --query "$LBUFFER")
 
       CURSOR=$#BUFFER
       zle clear-screen
     }
 
-    zle -N peco-select-history
+    zle -N fzf-select-history
 
-    bindkey '^r' peco-select-history
+    bindkey '^r' fzf-select-history
   fi
 }
