@@ -66,9 +66,8 @@
           zle clear-screen
       }
 
-    zle -N fzf-cdr
-    bindkey '^x' fzf-cdr
-
+      zle -N fzf-cdr
+      bindkey '^x' fzf-cdr
     fi
   }
 
