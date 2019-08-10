@@ -38,7 +38,7 @@
   }
 }
 
-: cdr + peco setting && {
+: cdr + fzf setting && {
   : 前提条件 && {
     autoload -Uz add-zsh-hook
     autoload -Uz chpwd_recent_dirs cdr
@@ -54,11 +54,11 @@
   }
 
   : 関数の定義 && {
-    if which peco > /dev/null; then
-      function peco-cdr () {
+    if which fzf > /dev/null; then
+      function fzf-cdr () {
           my-compact-chpwd-recent-dirs
 
-          local selected_dir=$(cdr -l | awk '{ print $2 }' | peco)
+          local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf)
           if [ -n "$selected_dir" ]; then
               BUFFER="cd ${selected_dir}"
               zle accept-line
@@ -66,8 +66,8 @@
           zle clear-screen
       }
 
-      zle -N peco-cdr
-    bindkey '^x' peco-cdr
+    zle -N fzf-cdr
+    bindkey '^x' fzf-cdr
 
     fi
   }
