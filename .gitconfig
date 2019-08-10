@@ -15,9 +15,7 @@
 
 [alias]
   # log関連
-  logg = !git log --pretty=format:'%C(yellow)%h%Creset %<(70,trunc)%s %<(20,trunc)%C(blue)%an %C(green)%ar%Creset' --reverse --stat master..`git symbolic-ref HEAD`
-
-  lpatch = !git logg -p
+  logg = !git log --reverse --oneline master..`git symbolic-ref HEAD` | fzf --preview 'git show --oneline --color=always {1}'
 
   # log + graph
   graph = log --graph --pretty=format:'%C(yellow)%h%C(cyan)%d%Creset %s %C(white)- %an, %ar%Creset'
@@ -29,11 +27,10 @@
   st = status
 
   # diff
-  d = diff
-  dc = diff --cached
+  d = "!f() { args=$@; [ -z \"$args\" ] && args=HEAD; ([ \"$args\" = \"HEAD\" ] && git status --short || git diff --name-status $args | sed 's/\t/  /') | fzf --preview \"echo {} | cut -c 4- | xargs git diff --color=always $args --\" --multi --height 90% | cut -c 4-; }; f"
 
   # checkout
-  co = checkout
+  co = "!f() { args=$@; if [ -z \"$args\" ]; then branch=$(git branch --all | grep -v HEAD | fzf --preview 'echo {} | cut -c 3- | xargs git log --color=always'); git checkout $(echo $branch | sed 's#remotes/[^/]*/##'); else git checkout $args; fi }; f"
 
   # commit
   c = commit
@@ -43,7 +40,6 @@
 
   # add
   a = !git add . && git now
-  au = !git add -u && git status
 
   # alias
   alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\\t => \\2/' | sort
@@ -69,11 +65,12 @@
   # git empty = git commit --allow-empty
   empty = commit --allow-empty -m "[WIP] " -e
 
-
   # git r, meaning `git rebase -i HEAD~` from the 1st commit in the current branch to the last.
   r = "!git rebase --keep-empty -i HEAD~$(git log --pretty=oneline master..$(git symbolic-ref HEAD) | wc -l | sed -Ee 's/ +//')"
 
-  modified = "!git diff-tree --no-commit-id --name-only -r master..$(git symbolic-ref HEAD)"
+  stl = !git stash list | fzf --preview 'echo {} | grep -o stash@{.*} | xargs git stash show -p --color=always' --height 90% | grep -o stash@{.*}
+  sta = !git stl | xargs git stash apply
+  std = !git stl | xargs git stash drop
 
 [github]
   user = kazu634

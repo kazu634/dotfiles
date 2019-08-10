@@ -38,7 +38,7 @@
   }
 }
 
-: cdr + peco setting && {
+: cdr + fzf setting && {
   : 前提条件 && {
     autoload -Uz add-zsh-hook
     autoload -Uz chpwd_recent_dirs cdr
@@ -54,11 +54,11 @@
   }
 
   : 関数の定義 && {
-    if which peco > /dev/null; then
-      function peco-cdr () {
+    if which fzf > /dev/null; then
+      function fzf-cdr () {
           my-compact-chpwd-recent-dirs
 
-          local selected_dir=$(cdr -l | awk '{ print $2 }' | peco)
+          local selected_dir=$(cdr -l | awk '{ print $2 }' | fzf)
           if [ -n "$selected_dir" ]; then
               BUFFER="cd ${selected_dir}"
               zle accept-line
@@ -66,15 +66,8 @@
           zle clear-screen
       }
 
-      zle -N peco-cdr
-      case ${OSTYPE} in
-        darwin*)
-          bindkey '^@' peco-cdr
-          ;;
-        linux*)
-          bindkey '^x' peco-cdr
-          ;;
-      esac
+      zle -N fzf-cdr
+      bindkey '^x' fzf-cdr
     fi
   }
 
@@ -94,11 +87,11 @@
   }
 }
 
-: history + peco function && {
-  # use `peco` to see the history:
+: history + fzf function && {
+  # use `fzf` to see the history:
   if which peco > /dev/null; then
     # statements
-    function peco-select-history() {
+    function fzf-select-history() {
       local tac
 
       if which tac > /dev/null; then
@@ -110,14 +103,14 @@
       BUFFER=$(history -n 1 | \
         eval $tac | \
         awk '!a[$0]++' | \
-        peco --query "$LBUFFER")
+        fzf --query "$LBUFFER")
 
       CURSOR=$#BUFFER
       zle clear-screen
     }
 
-    zle -N peco-select-history
+    zle -N fzf-select-history
 
-    bindkey '^r' peco-select-history
+    bindkey '^r' fzf-select-history
   fi
 }
