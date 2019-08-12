@@ -89,7 +89,7 @@
 
 : history + fzf function && {
   # use `fzf` to see the history:
-  if which peco > /dev/null; then
+  if which fzf > /dev/null; then
     # statements
     function fzf-select-history() {
       local tac
